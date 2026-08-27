@@ -1,0 +1,22 @@
+{
+  "pair_id": "ICLR_2021_Conference_-757TnNDwIn:soundness:ICLR_2021_Conference_-757TnNDwIn:R2:003:ICLR_2021_Conference_-757TnNDwIn:R4:022",
+  "assignment": {
+    "L1": "COMPLEMENTARY",
+    "L2": "PARTIAL_CONTRADICTION",
+    "adv_L1": "seallm",
+    "adv_L2": "gemma"
+  },
+  "transcript_order": [
+    "L2",
+    "L1"
+  ],
+  "openings": {
+    "L2": "## Bảo vệ nhãn PARTIAL_CONTRADICTION\n\n**Cả hai Claim đều tập trung vào vấn đề hiệu quả của phương pháp được đề xuất.** \n\nClaim A bày tỏ sự nghi ngờ về hiệu quả do \"poor presentation, limited comparisons\" và \"fairly limited benefits given its complexity and cost.\"\n\nTrong khi đó, Claim B phản bác bằng cách nhấn mạnh \"expectation\" trong thực tế sử dụng, khẳng định \"when deploying these algorithms in the wild\" hiệu suất trung bình (bao gồm cả trường hợp thất bại) là quan trọng hơn.\n\n**Dựa vào điều khoản rubric: **\n\n* **Ranh giới #5: Khái quát vs cụ thể.** Claim A đưa ra đánh giá tổng quát về hiệu quả, trong khi Claim B tập trung vào một khía cạnh cụ thể: hiệu suất trong trường hợp thất bại.\n\n\nMặc dù cả hai claim cùng xoay quanh vấn đề hiệu quả, nhưng cách nhìn nhận và trọng tâm khác",
+    "L1": "(a) Trích nguyên văn đoạn trong Claim A:\n\"I lean slightly against acceptance due to poor presentation, limited comparisons on most evaluations, and fairly limited benefits of the approach given its complexity and cost.\"\n\n(b) Dẫn điều khoản rubric cụ thể mà tôi dựa vào:\n- Ranh giới #4: \"Độ sâu chi tiết kỹ thuật và độ dễ đọc là hai trục khác nhau.\"\nCả hai claim đều đề cập đến hai khía cạnh khác nhau của một vấn đề: Claim A nói về chất lượng trình bày và so sánh hạn chế trong các đánh giá, trong khi Claim B tập trung vào độ tin cậy của mô hình khi áp dụng vào thực tế. Cả hai claim đều cung cấp thông tin bổ sung về hai khía cạnh khác nhau của vấn đề, do đó, nhãn bảo vệ là COMPLEMENTARY."
+  },
+  "rebuttals": {
+    "L2": "Phản bác:  \n\nDù hai claim đều liên quan đến bài báo, nhưng Claim A phản ánh sự thiếu sót về mặt trình bày và so sánh trong bài báo, trong khi Claim B nhấn mạnh khả năng triển khai thực tế của thuật toán.  \n\nMặc dù hai khía cạnh này có liên quan đến nhau, nhưng chúng là hai trục khác nhau như rubric đã chỉ ra: **Ranh giới #4: \"Độ sâu chi tiết kỹ thuật và độ dễ đọc là hai trục khác nhau.\"**\n\nClaim A chỉ trích phần kỹ thuật của bài báo (trình bày và so sánh), trong khi Claim B tập trung vào hiệu quả thực tế. Sự khác biệt về trọng tâm này tạo nên **PARTIAL_CONTRADICTION**, bởi chúng không bổ sung cho nhau mà mang đến hai đánh giá trái ngược về bài báo.",
+    "L1": "Một trong những đoạn trích trong Claim A là: \"Limited comparisons on most evaluations\" và \"fairly limited benefits of the approach given its complexity and cost.\" \n\nĐiều khoản Rubric cụ thể tôi dựa vào là \"Khái quát vs Cụ thể\" (Ranh giới #5). Cụ thể hơn, Claim A đưa ra đánh giá tổng quát về hiệu quả của phương pháp, trong khi Claim B tập trung vào một khía cạnh cụ thể: hiệu suất trong trường hợp thất bại. \n\nTôi sẽ phản bác trực tiếp đoạn trích mạnh nhất từ Claim B là: \"This is unreliable, as when deploying these algorithms in the wild we are far more interested in how they do in expectation (particularly if they fail completely some of the time).\""
+  },
+  "verdict": "COMPLEMENTARY"
+}

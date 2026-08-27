@@ -1,0 +1,22 @@
+{
+  "pair_id": "ICLR_2021_Conference_--gvHfE3Xf5:soundness:ICLR_2021_Conference_--gvHfE3Xf5:R1:049:ICLR_2021_Conference_--gvHfE3Xf5:R3:006",
+  "assignment": {
+    "L1": "PARTIAL_AGREEMENT",
+    "L2": "COMPLEMENTARY",
+    "adv_L1": "seallm",
+    "adv_L2": "gemma"
+  },
+  "transcript_order": [
+    "L2",
+    "L1"
+  ],
+  "openings": {
+    "L2": "## Bảo vệ nhãn COMPLEMENTARY\n\n**Nguyên văn đoạn:**\n\n* Claim A: \"But since the views in this community are not necessarily broadly shared, many of the statements, interpretations, and claims come across as quite strong and not fully corroborated.\"\n* Claim B: \"The authors go on to show supporting evidence that most likely, humans are using a compositional inductive bias when trying to uncover the hidden pattern, whereas the meta-learning algorithms do not.\"\n\n**Dựa vào điều khoản rubric:**\n\n**COMPLEMENTARY = hai claim nói về hai KHÍA CẠNH KHÁC NHAU của cùng issue, cả hai cùng đúng được.**\n\n**Phân tích:**\n\nClaim A bàn về **sự không thống nhất trong quan điểm** của cộng đồng về các tuyên bố, giải thích và lập luận trong bài báo. Claim B tập trung vào **chứng minh về sự khác biệt** trong cách xử lý thông tin giữa con người và thuật toán meta-learning.",
+    "L1": "(a) Trích nguyên văn đoạn trong Claim A:\n\"But since the views in this community are not necessarily broadly shared, many of the statements, interpretations, and claims come across as quite strong and not fully corroborated.\"\n\n(b) Dẫn điều khoản rubric cụ thể dựa vào:\n- PARTIAL_AGREEMENT: Cả hai claim đều đề cập đến các quan điểm khác nhau trong cộng đồng và mức độ xác thực của các tuyên bố, nhưng Claim A tập trung vào tính mạnh mẽ và không đầy đủ của các tuyên bố, trong khi Claim B tập trung vào việc chứng minh sự khác biệt giữa con người và các thuật toán học siêu giữa các mẫu. Cả hai claim đều đánh giá cùng một khía cạnh nhưng từ góc độ khác nhau. Do đó, chúng ta có thể coi đây là một ví dụ về PARTIAL_AGREEMENT."
+  },
+  "rebuttals": {
+    "L2": "Phản bác:  \n\nDù Claim A lưu ý về tính mạnh mẽ và sự thiếu minh chứng của nhiều tuyên bố trong cộng đồng, nhưng Claim B lại tập trung vào một khía cạnh hoàn toàn khác: khả năng của con người và thuật toán học siêu trong việc phát hiện các mẫu. \n\nClaim A lo ngại về **độ thuyết phục** của các tuyên bố, trong khi Claim B tập trung vào **phương pháp suy luận** được sử dụng.  Cả hai claim không mâu thuẫn, mà bổ sung cho nhau, minh họa hai khía cạnh khác nhau của cùng một vấn đề: **cách thức suy luận và mức độ thuyết phục của các tuyên bố** trong cộng đồng này. Vì vậy, chúng tôi xác định nhãn **COMPLEMENTARY** là phù hợp nhất.",
+    "L1": "Một trong những gì **Claim A** đưa ra là sự không nhất quán trong quan điểm của cộng đồng về các tuyên bố và lập luận trong bài báo (về việc không phải tất cả các tuyên bố đều được hỗ trợ đầy đủ bằng bằng chứng). **Claim B** nói về việc **chứng minh rằng con người có thể sử dụng một loại động cơ inductive nhất định** (compositional inductive bias) để khai thác một mẫu ẩn, trong khi thuật toán meta-learning thì không. \n\nCả hai claim đều đang đề cập đến hai khía cạnh khác nhau của cùng một vấn đề. \n\n1. **Kiến thức áp dụng**:\n   - Claim A, với sự không nhất quán trong quan điểm của cộng đồng, giúp ta hiểu rằng các lập luận và nhận định trong bài báo có thể không được chấp nhận rộng rãi, hoặc ít nhất là không dễ dàng được một số người trong cộng đồng đồng ý."
+  },
+  "verdict": "PARTIAL_AGREEMENT"
+}

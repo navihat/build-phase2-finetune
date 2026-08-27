@@ -1,0 +1,22 @@
+{
+  "pair_id": "ICLR_2021_Conference_-GLNZeVDuik:clarity:ICLR_2021_Conference_-GLNZeVDuik:R4:008:ICLR_2021_Conference_-GLNZeVDuik:R3:023",
+  "assignment": {
+    "L1": "PARTIAL_AGREEMENT",
+    "L2": "COMPLEMENTARY",
+    "adv_L1": "seallm",
+    "adv_L2": "gemma"
+  },
+  "transcript_order": [
+    "L1",
+    "L2"
+  ],
+  "openings": {
+    "L2": "## Bảo vệ nhãn COMPLEMENTARY\n\n**Nguyên văn đoạn trong claim:**\n\n* Claim A: \"The most critical section in the paper is least clearly explained--section 2.2.\" \n* Claim B: \"Presentations of the experimental results in the main manuscript totally rely on the tables.\"\n\n**Dựa vào điều khoản rubric:**\n\nCả hai claim đều liên quan đến vấn đề **rõ ràng của bài báo**, nhưng từ khía cạnh khác nhau. Claim A tập trung vào **sự rõ ràng của nội dung** (phần 2.2), trong khi Claim B chỉ ra **cách trình bày kết quả** (phụ thuộc vào bảng), dẫn đến việc đọc hiểu khó khăn. \n\nHai claim **không mâu thuẫn** mà bổ sung cho nhau,  vì một bài báo có thể rõ ràng về nội dung nhưng trình bày kết quả lại thiếu minh bạch, hoặc ngược lại. Do đó, nhãn **COMPLEMENTARY** là",
+    "L1": "(a) Trích nguyên văn đoạn trong Claim A:\n\"Presentaions of the experimental results in the main manuscript totally rely on the tables.\"\n\n(b) Dẫn điều khoản rubric cụ thể dựa vào:\n- RUBRIC ITEM 1: Clarity of Presentation\n- RUBRIC ITEM 2: Use of Tables and Figures\n\nVì Claim A và Claim B đều tập trung vào vấn đề rõ ràng trong trình bày và sử dụng bảng, nên chúng có sự liên quan và hỗ trợ nhau. Do đó, chúng tôi chọn nhãn Partial AGREEMENT."
+  },
+  "rebuttals": {
+    "L2": "Phản bác:  \n\nDù hai claim đều liên quan đến trình bày, nhưng Claim A chỉ tập trung vào việc **\"tập trung hoàn toàn vào bảng\"** trong trình bày kết quả thí nghiệm, trong khi Claim B lại chỉ ra **sự thiếu rõ ràng** của phần trình bày. \n\n**Đó là hai khía cạnh khác nhau.** Claim A chỉ ra **biện pháp** (sử dụng bảng), trong khi Claim B chỉ ra **kết quả** (thiếu rõ ràng) của việc sử dụng biện pháp đó. \n\nDo đó, hai claim không mâu thuẫn, mà là bổ sung cho nhau, **tạo nên một bức tranh toàn diện hơn về vấn đề trình bày**.",
+    "L1": "Một trong những gì **Claim A và B** có thể không đủ để đánh giá nhãn của chúng tôi. Cả hai claim đều không chỉ ra bất kỳ vấn đề cụ thể nào về nội dung, mà thay vào đó tập trung vào sự rõ ràng của nội dung. Tuy nhiên, việc đánh giá rõ ràng của nội dung là quan trọng và có thể ảnh hưởng đến nhãn của chúng tôi. Cả hai claim đều tập trung vào một khía cạnh khác nhau của sự rõ ràng của nội dung, và chúng có thể được coi là **COMPLEMENTARY**."
+  },
+  "verdict": "COMPLEMENTARY"
+}

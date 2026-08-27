@@ -1,0 +1,22 @@
+{
+  "pair_id": "ICLR_2021_Conference_--gvHfE3Xf5:soundness:ICLR_2021_Conference_--gvHfE3Xf5:R1:016:ICLR_2021_Conference_--gvHfE3Xf5:R3:023",
+  "assignment": {
+    "L1": "COMPLEMENTARY",
+    "L2": "PARTIAL_CONTRADICTION",
+    "adv_L1": "gemma",
+    "adv_L2": "seallm"
+  },
+  "transcript_order": [
+    "L2",
+    "L1"
+  ],
+  "openings": {
+    "L1": "## Bảo vệ nhãn COMPLEMENTARY\n\n**Nguyên văn đoạn:**\n\n* Claim A: \"Due to the discrete, simplified nature of the game, it would seem almost certainly true that there exists some generative grammar that can produce the non-compositional boards seen here.\"\n* Claim B: \"My point does not mean to invalidate the findings and conclusion, but rather to emphasise that perhaps we shouldn't be looking at this type of experiments, as they are 'doomed to fail'.\"\n\n**Dựa vào điều khoản rubric:**\n\nRanh giới #1: COMPLEMENTARY vs PARTIAL_AGREEMENT: Hai claim cùng nói về vấn đề **kiểm tra xem có thể tạo ra các bảng không cấu trúc thông qua ngữ pháp tạo mẫu hay không** nhưng từ góc nhìn khác nhau. \n\nClaim A **nói về khả năng có ngữ pháp tạo mẫu**, trong khi Claim B **đề cập đến liệu việc thực hiện các thí nghiệm này có hữu ích",
+    "L2": "(a) Trích nguyên văn đoạn trong Claim A:\n\"Due to the discrete, simplified nature of the game, it would seem almost certainly true that there exists some generative grammar that can produce the non-compositional boards seen here.\"\n\n(b) Dẫn điều khoản rubric cụ thể mà bạn dựa vào:\n- PARTIAL_CONTRADICTION: có điểm chung, nhưng mâu thuẫn ở MỘT trục quan trọng.\n\nTrong trường hợp này, cả hai claim đều liên quan đến việc xem xét tính khả thi của một đề xuất trong nghiên cứu. Tuy nhiên, Claim A cho rằng có thể tồn tại một ngữ pháp tạo ra các bảng không có tính tự chứa trong game, trong khi Claim B cho rằng nghiên cứu này có thể không đạt được kết quả mong muốn do các yếu tố tiềm ẩn như do hạn chế trong thiết kế thí nghiệm hoặc các vấn đề khác. Cả hai claim đều đề cập đến vấn đề tiềm năng"
+  },
+  "rebuttals": {
+    "L1": "Claim A và Claim B cùng tập trung vào vấn đề khả thi của một đề xuất nghiên cứu, nhưng từ góc nhìn khác nhau. \n\nClaim A ([a]) khẳng định khả năng tồn tại một ngữ pháp tạo ra những bảng không có tính tự chứa trong game, dựa trên tính chất riêng lẻ và đơn giản của game. \n\nClaim B ([b]) không bác bỏ luận điểm này, mà chỉ nhấn mạnh sự cần thiết phải xem xét kỹ lưỡng các hạn chế tiềm ẩn trong thiết kế thí nghiệm, đồng thời đề xuất cần cân nhắc liệu loại thí nghiệm này có phù hợp hay không. \n\nDo đó, hai claim bổ sung cho nhau, cung cấp một cái nhìn toàn diện hơn về vấn đề nghiên cứu.",
+    "L2": "Một trong những gì **Claim B** đưa ra là \"nếu chúng ta không thể tạo ra các bảng không cấu trúc thông qua ngữ pháp tạo mẫu thì liệu việc thực hiện các thí nghiệm này có hữu ích hay không?\" Điều này không phủ định khả năng có ngữ pháp tạo mẫu được Claim A đề cập đến, mà chỉ đề cập đến tính hữu ích của các thí nghiệm này. Điều này cho thấy hai claim có điểm chung về vấn đề kiểm tra khả năng tạo ra các bảng không cấu trúc qua ngữ pháp tạo mẫu, nhưng mâu thuẫn ở một khía cạnh khác nhau. Do đó, nhãn cần bảo vệ là PARTIAL_CONTRADICTION."
+  },
+  "verdict": "COMPLEMENTARY"
+}

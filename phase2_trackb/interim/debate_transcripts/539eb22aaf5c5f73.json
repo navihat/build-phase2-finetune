@@ -1,0 +1,22 @@
+{
+  "pair_id": "ICLR_2021_Conference_--gvHfE3Xf5:soundness:ICLR_2021_Conference_--gvHfE3Xf5:R1:036:ICLR_2021_Conference_--gvHfE3Xf5:R3:022",
+  "assignment": {
+    "L1": "COMPLEMENTARY",
+    "L2": "PARTIAL_CONTRADICTION",
+    "adv_L1": "gemma",
+    "adv_L2": "seallm"
+  },
+  "transcript_order": [
+    "L1",
+    "L2"
+  ],
+  "openings": {
+    "L1": "## Bảo vệ nhãn COMPLEMENTARY\n\n**Nguyên văn:**\n\n* Claim A: \"The inductive bias of a model is determined by more than its parameters (which in this case, are established via meta-learning).\"\n* Claim B: \"This is perhaps an underlying reason why the meta-learning algorithm never picks up the compositionality inductive bias exhibited by humans.\"\n\n**Dựa vào:**\n\n* **Ranh giới COMPLEMENTARY vs PARTIAL_CONTRADICTION:** Claim A khẳng định các yếu tố **trên và ngoài** tham số (parameters) ảnh hưởng đến độ thiên vị học (inductive bias). Claim B đưa ra một **lý do tiềm ẩn** cho tại sao thuật toán meta-learning **có thể chưa** nắm bắt được thiên vị học về tính chất cấu trúc (compositionality) như con người.\n\n**Giải thích:**\n\nMặc dù cả hai claim đều liên quan đến **inductive bias** và **meta-learning**,",
+    "L2": "(a) Trích nguyên văn đoạn trong Claim A:\n\"The inductive bias of a model is determined by more than its parameters (which in this case, are established via meta-learning).\"\n\n(b) Dẫn điều khoản rubric cụ thể:\n- PARTIAL_CONTRADICTION: có điểm chung, nhưng mâu thuẫn ở MỘT trục quan trọng."
+  },
+  "rebuttals": {
+    "L1": "Claim A và Claim B cùng tập trung vào vấn đề về inductive bias và cách meta-learning ảnh hưởng đến nó. Claim A khẳng định inductive bias không chỉ phụ thuộc vào các tham số được thiết lập thông qua meta-learning, cho thấy tồn tại các yếu tố khác ảnh hưởng đến nó. \n\nClaim B sau đó đưa ra một giả thuyết về lý do tại sao meta-learning có thể không thu thập được inductive bias về tính tổ hợp của con người, một khía cạnh cụ thể của inductive bias. \n\nMặc dù Claim B gợi ý một hạn chế của meta-learning, nó không phủ nhận lập luận của Claim A về sự đa dạng của các yếu tố quyết định inductive bias. \n\nTheo rubric, **PARTIAL_CONTRADICTION** được áp dụng khi hai claim có điểm chung nhưng mâu thuẫn ở một trục quan trọng. Trong trường hợp này, cả hai claim đều thừa nhận sự tồn tại của inductive bias và vai trò của",
+    "L2": "Một trong những gì **Claim A** đưa ra là \"The inductive bias of a model is determined by more than its parameters (which in this case, are established via meta-learning).\"\n\nĐiều này được **lập luận** bằng cách khẳng định rằng **tham số** (parameters) **không phải là yếu tố duy nhất** ảnh hưởng đến độ thiên vị học của mô hình. Điều này có thể được hiểu là một khía cạnh bổ sung cho đoạn trích của Claim B, mà nói rằng:\n\n**Claim B:** \"This is perhaps an underlying reason why the meta-learning algorithm never picks up the compositionality inductive bias exhibited by humans.\"\n\nDựa vào điều khoản rubric về COMPLEMENTARY vs PARTIAL_CONTRADICTION, chúng ta có thể thấy rằng cả hai claim đều nói về các khía cạnh liên quan đến **inductive bias** và **meta-learning**. Cụ thể, Claim A nhấn mạnh rằng độ thiên vị"
+  },
+  "verdict": "COMPLEMENTARY"
+}

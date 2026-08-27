@@ -1,0 +1,22 @@
+{
+  "pair_id": "ICLR_2021_Conference_-IXhmY16R3M:originality:ICLR_2021_Conference_-IXhmY16R3M:R1:005:ICLR_2021_Conference_-IXhmY16R3M:R2:005",
+  "assignment": {
+    "L1": "COMPLEMENTARY",
+    "L2": "PARTIAL_CONTRADICTION",
+    "adv_L1": "gemma",
+    "adv_L2": "seallm"
+  },
+  "transcript_order": [
+    "L2",
+    "L1"
+  ],
+  "openings": {
+    "L1": "## Bảo vệ nhãn COMPLEMENTARY\n\n**Dựa vào:**\n\n* Claim A: \"The reviewer there is technical novelty in the paper and also the result is quite elegant.\"\n* Claim B: \"The existing relevant work by Li et al., 2019 has already established very similar results for universal approximation capability of such deep residual neural networks in the sense of L-p norm rather than L-infinity norm (where p can be any number between 1 and infinity).\"\n\n**Rubric:** COMPLEMENTARY (hai claim nói về hai KHÍA CẠNH KHÁC NHAU)\n\n**Giải thích:**\n\nClaim A đánh giá về **độ mới mẻ về mặt kỹ thuật** của bài báo và sự **tinh tế của kết quả** đạt được.  Trong khi đó, Claim B tập trung vào **khía cạnh lý thuyết** bằng cách so sánh kết quả của bài báo với công trình trước đó của Li et al.,",
+    "L2": "(a) Trích nguyên văn đoạn trong Claim B:\n\"the existing relevant work by Li et al., 2019 has already established very similar results for universal approximation capability of such deep residual neural networks in the sense of L-p norm rather than L-infinity norm (where p can be any number between 1 and infinity).\"\n\n(b) Dẫn điều khoản rubric cụ thể:\nRanh giới #1: \"Cùng một sự thật (nhiều máy móc kỹ thuật) bị hai bên đánh giá ngược chiều.\""
+  },
+  "rebuttals": {
+    "L1": "Claim A đánh giá  \"technical novelty\" và \"elegant results\" của bài báo, tập trung vào những đóng góp **mới** và **đẹp mắt** của nó. \n\nClaim B nhấn mạnh sự tương đồng với công trình Li et al., 2019 về khả năng suy ra toàn diện của mạng n pekerja sâu, nhưng chỉ ra sự khác biệt về **mức độ** (L-p norm thay vì L-infinity norm).  \n\nHai claim không mâu thuẫn với nhau, mà bổ sung cho nhau. Claim A đề cao những điểm mới mẻ và đẹp mắt trong tác phẩm, trong khi Claim B cung cấp **bối cảnh** và **sự so sánh** với công trình trước đó, giúp đánh giá **đóng góp cụ thể** của bài báo.\n\n\nMặc dù hai claim cùng bàn về khả năng suy ra toàn diện của mạng n pekerja sâu, nhưng Claim A tập trung vào **những đóng góp mới và",
+    "L2": "Một trong những gì **Claim B** đưa ra là sự giống nhau về **thuật toán** và **kết quả** với công trình trước đó của Li et al., 2019, trong khi **Claim A** tập trung vào **độ mới mẻ về mặt kỹ thuật** và **tinh tế của kết quả** của bài báo đang được xem xét. Cả hai claim đều đánh giá các khía cạnh khác nhau của bài báo và không mâu thuẫn trực tiếp với nhau. Thay vào đó, chúng bổ sung cho nhau và cung cấp một cái nhìn toàn diện về bài báo. Do đó, nhãn bổ sung cho ranh giới được giao là COMPLEMENTARY."
+  },
+  "verdict": "COMPLEMENTARY"
+}

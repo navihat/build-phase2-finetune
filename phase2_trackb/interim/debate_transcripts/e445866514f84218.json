@@ -1,0 +1,22 @@
+{
+  "pair_id": "ICLR_2021_Conference_-757TnNDwIn:soundness:ICLR_2021_Conference_-757TnNDwIn:R1:013:ICLR_2021_Conference_-757TnNDwIn:R2:000",
+  "assignment": {
+    "L1": "COMPLEMENTARY",
+    "L2": "PARTIAL_AGREEMENT",
+    "adv_L1": "gemma",
+    "adv_L2": "seallm"
+  },
+  "transcript_order": [
+    "L1",
+    "L2"
+  ],
+  "openings": {
+    "L1": "## Bảo vệ nhãn COMPLEMENTARY\n\n**Nguyên văn đoạn trong claim:**\n\n* Claim A: \"To be a fair comparison, it would be better to compare [number of queries * resource consumed per query].\"\n* Claim B: \"A flexible but complex and expensive NAS method.\"\n\n**Điều khoản rubric:**\n\n- COMPLEMENTARY: hai claim nói về hai KHÍA CẠNH KHÁC NHAU của cùng issue, cả hai cùng đúng được.\n\n**Phân tích:**\n\nClaim A đề cập đến **cách so sánh hiệu suất** của một phương pháp NAS (Neural Architecture Search), tập trung vào số lượng truy vấn và tài nguyên tiêu thụ. Claim B tập trung vào **tính chất** của phương pháp NAS đó, miêu tả nó là linh hoạt nhưng phức tạp và tốn kém. \n\nMặc dù hai claim khác nhau về nội dung, chúng đều liên quan đến **cùng một vấn đề: đánh giá phương pháp NAS**.",
+    "L2": "(a) Trích nguyên văn đoạn trong Claim A:\n\"to be a fair comparison, it would be better to compare [number of queries * resource consumed per query].\"\n\n(b) Điều khoản Rubric cụ thể dựa vào:\n- PARTIAL_AGREEMENT: có phần chung rõ, nhưng khác phạm vi / điều kiện / mức độ."
+  },
+  "rebuttals": {
+    "L1": "Claim A đề xuất cách tính toán mới cho việc so sánh, trong khi Claim B miêu tả một phương pháp NAS (Neuro-Architecture Search) cụ thể.  \n\nMặc dù Claim B không đề cập đến cách so sánh, nhưng việc phân tích chi phí (tính ra \"flexible but complex and expensive\") của một phương pháp NAS là một khía cạnh bổ sung và hữu ích cho việc đánh giá toàn diện của phương pháp đó. Hai claim không mâu thuẫn, mà bổ sung cho nhau. \n\nClaim A cung cấp một tiêu chí công bằng cho việc so sánh, trong khi Claim B cung cấp thông tin quan trọng về chi phí thực tiễn của phương pháp.",
+    "L2": "Một trong những gì **Claim A** đưa ra là \"để có một so sánh công bằng, nên so sánh [số lượng truy vấn * tài nguyên tiêu thụ mỗi truy vấn].\" Điều này tập trung vào cách đánh giá hiệu suất của một phương pháp NAS (Neural Architecture Search). \n\nTrong khi đó, **Claim B** đề cập đến \"một phương pháp NAS linh hoạt nhưng phức tạp và đắt tiền.\" Điều này tập trung vào các đặc điểm của phương pháp NAS cụ thể đang được thảo luận.\n\nDù hai claim này có nội dung khác nhau, chúng đều liên quan đến **cùng một vấn đề: đánh giá phương pháp NAS**. Cả hai khía cạnh này đều cần được xem xét khi đánh giá phương pháp NAS. \n\nVí dụ, như vậy, chúng có thể bổ sung cho nhau. Một phương pháp NAS có thể linh hoạt và hữu ích trong nhiều tình"
+  },
+  "verdict": "COMPLEMENTARY"
+}

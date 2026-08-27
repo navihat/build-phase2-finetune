@@ -1,0 +1,22 @@
+{
+  "pair_id": "ICLR_2021_Conference_-GLNZeVDuik:clarity:ICLR_2021_Conference_-GLNZeVDuik:R4:009:ICLR_2021_Conference_-GLNZeVDuik:R2:005",
+  "assignment": {
+    "L1": "COMPLEMENTARY",
+    "L2": "CONTRADICTION",
+    "adv_L1": "gemma",
+    "adv_L2": "seallm"
+  },
+  "transcript_order": [
+    "L1",
+    "L2"
+  ],
+  "openings": {
+    "L1": "## Bảo vệ nhãn COMPLEMENTARY\n\n**Nguyên văn đoạn:**\n\n* Claim A: \"The use of ill-defined terms and lack of clarity hamper confidence.\"\n* Claim B: \"The paper is well written and the proposed solution is clearly presented in sections 2 and 3.\"\n\n**Điều khoản rubric:** COMPLEMENTARY vs PARTIAL_AGREEMENT\n\n**Lý giải:**\n\nHai claim nói về hai khía cạnh khác nhau của chất lượng văn bản. Claim A chỉ ra điểm yếu về sự rõ ràng và định nghĩa, trong khi Claim B khen ngợi chất lượng viết lách và sự trình bày rõ ràng của một số phần cụ thể. \n\nHai claim không loại trừ lẫn nhau mà bổ sung cho nhau.",
+    "L2": "(a) Trích nguyên văn đoạn trong Claim A:\n\"The use of ill-defined terms and lack of clarity hamper confidence.\"\n\n(b) Dẫn điều khoản rubric cụ thể:\n- Ranh giới giữa Complementary và Partial_Contradiction là trục Hedging (ngôn ngữ rào đón).\n- Đặc điểm của Partial_Contradiction là không phủ định toàn bộ bên kia, chỉ mâu thuẫn ở một trục quan trọng.\n- Trong trường hợp này, Claim A và Claim B nói về hai khía cạnh khác nhau của đề tài: rõ ràng và dễ hiểu (Claim A) và viết tốt và trình bày rõ ràng (Claim B). Do đó, hai claim này không mâu thuẫn trong khía cạnh Hedging, nhưng bổ sung cho nhau và cùng hướng đến mục tiêu chung."
+  },
+  "rebuttals": {
+    "L1": "Phản bác:  \n\nDù Claim A chỉ ra các vấn đề về độ rõ ràng và định nghĩa, Claim B khẳng định việc trình bày của tác giả là rõ ràng. Tuy nhiên, hai claim không mâu thuẫn mà bổ sung cho nhau.  Claim A tập trung vào **lời phê bình** về việc sử dụng thuật ngữ và sự rõ ràng, trong khi Claim B tập trung vào **ưu điểm** về cách trình bày. \n\nHai claim này không phủ định lẫn nhau mà cách tiếp cận hai khía cạnh khác nhau của cùng một vấn đề: độ rõ ràng và tính hấp dẫn của bài báo.",
+    "L2": "Một trong những gì **Claim A** nêu ra là sự thiếu rõ ràng và định nghĩa không tốt. Chẳng hạn:\n\n> \"The use of ill-defined terms and lack of clarity hamper confidence.\"\n\nĐiều này nhấn mạnh rằng những vấn đề về rõ ràng và định nghĩa không tốt sẽ làm giảm sự tự tin vào chất lượng văn bản. Tuy nhiên, **Claim B** lại khen ngợi các phần cụ thể trong bài viết, nhấn mạnh rằng văn bản được viết rõ ràng và dễ hiểu.\n\n> \"The paper is well written and the proposed solution is clearly presented in sections 2 and 3.\"\n\nVới bối cảnh này, hai claim không mâu thuẫn mà bổ sung cho nhau. **Claim A** nêu ra những vấn đề cần cải thiện, trong khi **Claim B** khen ngợi những điểm mạnh trong bài viết. Do đó, nhãn \"COMPLEMENTARY\" là phù hợp nhất."
+  },
+  "verdict": "COMPLEMENTARY"
+}

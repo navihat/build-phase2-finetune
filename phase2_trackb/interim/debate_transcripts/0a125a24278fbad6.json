@@ -1,0 +1,22 @@
+{
+  "pair_id": "ICLR_2021_Conference_-GLNZeVDuik:clarity:ICLR_2021_Conference_-GLNZeVDuik:R4:008:ICLR_2021_Conference_-GLNZeVDuik:R2:005",
+  "assignment": {
+    "L1": "PARTIAL_CONTRADICTION",
+    "L2": "COMPLEMENTARY",
+    "adv_L1": "gemma",
+    "adv_L2": "seallm"
+  },
+  "transcript_order": [
+    "L1",
+    "L2"
+  ],
+  "openings": {
+    "L1": "## Bảo vệ nhãn PARTIAL_CONTRADICTION\n\n**Căn cứ:** Claim A nêu rõ \"The most critical section in the paper is least clearly explained--section 2.2\", phản ánh sự thiếu rõ ràng trong một phần quan trọng của bài báo. Trong khi đó, Claim B khẳng định \"The paper is well written and the proposed solution is clearly presented in sections 2 and 3\".\n\n**Dựa vào điều khoản rubric:** \n\nHai claim cùng bàn luận về chất lượng và sự rõ ràng của bài báo. Claim A nêu nhận xét tiêu cực về một phần cụ thể (2.2), trong khi Claim B đưa ra nhận xét tích cực về phần khác (2 và 3). Mặc dù có chung chủ đề là \"sự rõ ràng\", hai claim lại phản ánh hai quan điểm trái ngược nhau về **chi tiết cụ thể**, tạo nên một **mâu thuẫn ở một trục quan trọng**. \n\n\nDo đó,",
+    "L2": "(a) Trích nguyên văn đoạn làm căn cứ:\nClaim A: \"The most critical section in the paper is least clearly explained--section 2.2.\"\nClaim B: \"The paper is well written and the proposed solution is clearly presented in sections 2 and 3.\"\n\n(b) Dẫn điều khoản rubric cụ thể mà dựa vào: PARTIAL_CONTRADICTION -> \"Cùng một sự thật (nhiều máy móc kỹ thuật) bị hai bên đánh giá ngược chiều.\""
+  },
+  "rebuttals": {
+    "L1": "Claim A và Claim B thể hiện một PARTIAL_CONTRADICTION bởi vì chúng phản ánh cùng một sự thật - chất lượng viết lách và độ rõ ràng của bài báo - nhưng đánh giá nó theo chiều ngược nhau.  \n\nMặc dù Claim B khẳng định rằng \"The paper is well written and the proposed solution is clearly presented in sections 2 and 3\", Claim A lại cho rằng \"The most critical section in the paper is least clearly explained--section 2.2\". \n\nĐiều này cho thấy một sự khác biệt rõ ràng về đánh giá về độ rõ ràng của một phần quan trọng trong bài báo.",
+    "L2": "Một trong những đoạn trích mà bên đối thủ có thể đưa ra để bảo vệ nhãn PARTIAL_CONTRADICTION có thể là đoạn sau: \"The paper employs a substantial amount of methods and machinery that the authors are well familiar with and understand the problem space well.\" (Căn cứ: Claim A nêu rõ \"The most critical section in the paper is least clearly explained--section 2.2\", phản ánh sự thiếu rõ ràng trong một phần quan trọng của bài báo. Trong khi đó, Claim B khẳng định \"The paper is well written and the proposed solution is clearly presented in sections 2 and 3\")."
+  },
+  "verdict": "COMPLEMENTARY"
+}

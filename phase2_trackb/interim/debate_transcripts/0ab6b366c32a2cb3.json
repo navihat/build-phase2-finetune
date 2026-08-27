@@ -1,0 +1,22 @@
+{
+  "pair_id": "ICLR_2021_Conference_-IXhmY16R3M:clarity:ICLR_2021_Conference_-IXhmY16R3M:R1:022:ICLR_2021_Conference_-IXhmY16R3M:R2:000",
+  "assignment": {
+    "L1": "PARTIAL_AGREEMENT",
+    "L2": "COMPLEMENTARY",
+    "adv_L1": "gemma",
+    "adv_L2": "seallm"
+  },
+  "transcript_order": [
+    "L2",
+    "L1"
+  ],
+  "openings": {
+    "L1": "## Bảo vệ nhãn PARTIAL_AGREEMENT\n\n**Cả hai Claim đều đánh giá về chất lượng viết lách của bài báo.** \n\nClaim A nêu lên một nhược điểm: \"vài phần của bài báo khó hiểu đối với người không chuyên\". \n\nĐiều này **khác hẳn** với Claim B khẳng định: \"bài báo được viết tốt, rõ ràng và được tổ chức tốt\". \n\nNhư vậy, hai Claim **chung quy đều đánh giá về chất lượng viết lách nhưng với những khía cạnh khác nhau**: A chỉ ra một điểm chưa được cải thiện, trong khi B đưa ra một đánh giá tích cực chung.\n\n**Rubric áp dụng:**\n\n* **PARTIAL_AGREEMENT:** có phần chung rõ, nhưng khác phạm vi / điều kiện / mức độ.",
+    "L2": "(a) Trích nguyên văn đoạn trong Claim A:\n\"Currently, several parts of the paper read off as a bit mysterious for non-experts.\"\n\n(b) Dẫn điều khoản rubric cụ thể mà bạn dựa vào: PARTIAL_AGREEMENT\n(Đoạn này không hoàn toàn chung, nhưng không mâu thuẫn; một claim bổ sung khía cạnh mới.)"
+  },
+  "rebuttals": {
+    "L1": "Claim A chỉ ra rằng một số phần bài báo có thể gây khó hiểu cho người đọc không chuyên, trong khi Claim B khẳng định bài báo được viết rõ ràng, mạch lạc. \n\nMặc dù hai claim đều đánh giá về sự rõ ràng của bài báo, nhưng chúng khác nhau về phạm vi. Claim A tập trung vào những điểm khó hiểu đối với người đọc không chuyên, trong khi Claim B cung cấp một đánh giá chung về sự rõ ràng của toàn bộ bài báo. \n\nTheo rubric, **PARTIAL_AGREEMENT** phù hợp nhất vì hai claim cùng liên quan đến khía cạnh \"rõ ràng\" nhưng khác nhau về phạm vi và mức độ.",
+    "L2": "Một trong những đoạn trích mà bên đối thủ có thể đưa ra để bảo vệ nhãn PARTIAL_AGREEMENT là:\n\n\"Chúng tôi đánh giá rằng, mặc dù có một số phần của bài báo khó hiểu đối với những người không chuyên, nhưng bài báo vẫn được viết tốt, rõ ràng và được tổ chức tốt.\"\n\nTrong đoạn trích này, chúng tôi có thể thấy rằng mặc dù có nhược điểm được nêu ra trong Claim A, nhưng vẫn có một đánh giá tích cực được đưa ra trong Claim B. Điều này cho thấy rằng hai claim đánh giá về chất lượng viết lách của bài báo nhưng với những khía cạnh khác nhau.\n\nDựa vào rubric, chúng tôi có thể áp dụng nhãn PARTIAL_AGREEMENT cho hai claim này vì chúng đánh giá về cùng một issue nhưng khác phạm vi và mức độ. Chúng tôi không đồng ý với nhãn COMPLEMENTARY vì hai claim không đánh giá về hai khía cạnh khác nhau"
+  },
+  "verdict": "COMPLEMENTARY"
+}

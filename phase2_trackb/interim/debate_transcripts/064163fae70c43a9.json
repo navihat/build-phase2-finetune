@@ -1,0 +1,22 @@
+{
+  "pair_id": "ICLR_2021_Conference_-5VpoDCExrU:originality:ICLR_2021_Conference_-5VpoDCExrU:R3:007:ICLR_2021_Conference_-5VpoDCExrU:R4:018",
+  "assignment": {
+    "L1": "COMPLEMENTARY",
+    "L2": "PARTIAL_AGREEMENT",
+    "adv_L1": "seallm",
+    "adv_L2": "gemma"
+  },
+  "transcript_order": [
+    "L1",
+    "L2"
+  ],
+  "openings": {
+    "L2": "Claim A khẳng định \"Transformer based approach is not novel.\" trong khi Claim B cho rằng \"this area has been widely studied and there are a lot more research work (some also utilized deep learning and language models).\" \n\nHai claim đều đồng ý rằng lĩnh vực này đã được nghiên cứu rộng rãi. Tuy nhiên, Claim A phủ định tính mới mẻ của Transformer, trong khi Claim B chỉ nhấn mạnh sự tồn tại của nhiều nghiên cứu, không nhất thiết phải liên quan đến tính mới mẻ. \n\nDo đó, hai claim đánh giá cùng một khía cạnh (sự nghiên cứu về lĩnh vực này) nhưng khác về phạm vi và mức độ, phù hợp với nhãn **PARTIAL_AGREEMENT**.",
+    "L1": "(a) Trích nguyên văn đoạn trong Claim A:\n\"Actually, this area has been widely studied and there are a lot more research work (some also utilized deep learning and language models).\"\n\n(b) Dẫn điều khoản rubric cụ thể mà tôi dựa vào:\n- PARTIAL_AGREEMENT: có phần chung rõ, nhưng khác phạm vi / điều kiện / mức độ.\n- COMPLEMENTARY: cùng issue hoặc liên quan chặt, KHÔNG mâu thuẫn; một claim bổ sung khía cạnh mới.\n- COMPLEMENTARY vs PARTIAL_AGREEMENT: hai claim nói về hai KHÍA CẠNH KHÁC NHAU của cùng issue, cả hai cùng đúng được. PARTIAL_AGREEMENT = hai claim đánh giá CÙNG một khía cạnh"
+  },
+  "rebuttals": {
+    "L2": "Claim A khẳng định lĩnh vực này đã được nghiên cứu rộng rãi, nhưng điều này không phản bác Claim B cho rằng Transformer-based approach là chưa novel. \n\nClaim A tập trung vào phạm vi nghiên cứu chung trong lĩnh vực, trong khi Claim B đề cập cụ thể đến tính mới của Transformer-based approach.  Hai claim đang đánh giá cùng một khía cạnh - tính mới mẻ của Transformer-based approach, nhưng trên hai phạm vi khác nhau. \n\nDo đó, đây là trường hợp **PARTIAL_AGREEMENT**.",
+    "L1": "Một trong những đoạn trích trong Claim B là: \"Actually, this area has been widely studied and there are a lot more research work (some also utilized deep learning and language models).\"\n\nTôi, một luật sư biện hộ, bảo vệ nhãn **PARTIAL_AGREEMENT** dựa trên điều khoản rubric cụ thể rằng hai Claim đánh giá cùng một khía cạnh nhưng khác về phạm vi và mức độ. \n\nTôi không đồng ý với nhãn **COMPLEMENTARY** vì hai Claim không cùng đánh giá hai khía cạnh khác nhau của cùng một issue. Thay vào đó, chúng chỉ khác nhau về phạm vi và mức độ. \n\nĐiều khoản rubric cụ thể mà tôi dựa vào là: \"Cùng chứng minh một khía cạnh của cùng một vấn đề, nhưng khác về phạm vi và mức độ.\" \n\nTuy nhiên, tôi, một luật sư biện hộ, cũng có thể đưa ra một phản bác mạnh mẽ đối với"
+  },
+  "verdict": "COMPLEMENTARY"
+}

@@ -1,0 +1,22 @@
+{
+  "pair_id": "ICLR_2021_Conference_-GLNZeVDuik:soundness:ICLR_2021_Conference_-GLNZeVDuik:R2:006:ICLR_2021_Conference_-GLNZeVDuik:R3:007",
+  "assignment": {
+    "L1": "COMPLEMENTARY",
+    "L2": "PARTIAL_AGREEMENT",
+    "adv_L1": "gemma",
+    "adv_L2": "seallm"
+  },
+  "transcript_order": [
+    "L2",
+    "L1"
+  ],
+  "openings": {
+    "L1": "## Bảo vệ nhãn COMPLEMENTARY\n\n**Nguyên văn đoạn trong claim:**\n\n* Claim A: \"The first results on molecule generation are very good when compared to those obtained with other approaches.\" \n* Claim B: \"Existing flow models for graphs do not handle the categorical data in proper manners and are permutation-dependent.\"\n\n\n**Dựa vào điều khoản rubric:**\n\nClaim A đánh giá **kết quả** của phương pháp mới trong việc tạo phân tử là **\"rất tốt\"**. Claim B thì chỉ ra **điểm yếu** của các **phương pháp hiện có** (flow models cho đồ thị) là **không xử lý dữ liệu danh mục** và **phụ thuộc vào hoán đổi**. \n\nMặc dù hai claim đề cập đến các **phương pháp tạo phân tử**, nhưng chúng tập trung vào **khía cạnh khác nhau**: \n\n* A: **Kết quả so với phương pháp khác**\n* B: **Giới hạn",
+    "L2": "(a) Trích nguyên văn đoạn trong Claim A:\n\"The first results on molecule generation are very good when compared to those obtained with other approaches.\"\n\n(b) Dẫn điều khoản rubric cụ thể dựa vào:\n- PARTIAL_AGREEMENT: có phần chung rõ, nhưng khác phạm vi / điều kiện / mức độ."
+  },
+  "rebuttals": {
+    "L1": "Claim A khẳng định kết quả đầu tiên về tạo ra phân tử \"rất tốt\" so với các phương pháp khác. Claim B tập trung vào những hạn chế của các mô hình dòng hiện có đối với dữ liệu danh mục, một vấn đề hoàn toàn khác với hiệu suất tạo phân tử. \n\nDo đó, hai claim này không đánh giá cùng một khía cạnh, mà bổ sung cho nhau. Claim A tập trung vào thành tích, trong khi Claim B chỉ ra một điểm yếu chung của các mô hình dòng, có thể được khắc phục để cải thiện hiệu suất tạo phân tử.  \n\n\nDựa vào rubric **COMPLEMENTARY vs PARTIAL_AGREEMENT**:\n\n**COMPLEMENTARY = hai claim nói về hai KHÍA CẠNH KHÁC NHAU của cùng issue, cả hai cùng đúng được.**",
+    "L2": "Một trong những gì **Claim A và B chia sẻ** là **phương pháp tạo phân tử (molecule generation)**. Mặc dù hai claim này không hoàn toàn thống nhất về mức độ, nhưng chúng đều tập trung vào những khía cạnh khác nhau của phương pháp này. \n\nClaim A đánh giá **kết quả** của phương pháp mới trong việc tạo phân tử so với các phương pháp khác, còn Claim B thì chỉ ra **điểm yếu** của các phương pháp hiện có (flow models cho đồ thị) là **không xử lý dữ liệu danh mục** và **phụ thuộc vào hoán đổi**. \n\nDù không hoàn toàn thống nhất về mức độ, nhưng cả hai claim này đều tập trung vào **phương pháp tạo phân tử** và có thể bổ sung cho nhau."
+  },
+  "verdict": "COMPLEMENTARY"
+}

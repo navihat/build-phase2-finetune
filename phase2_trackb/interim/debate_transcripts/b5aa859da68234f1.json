@@ -1,0 +1,22 @@
+{
+  "pair_id": "ICLR_2021_Conference_--gvHfE3Xf5:clarity:ICLR_2021_Conference_--gvHfE3Xf5:R1:048:ICLR_2021_Conference_--gvHfE3Xf5:R3:018",
+  "assignment": {
+    "L1": "COMPLEMENTARY",
+    "L2": "PARTIAL_AGREEMENT",
+    "adv_L1": "gemma",
+    "adv_L2": "seallm"
+  },
+  "transcript_order": [
+    "L1",
+    "L2"
+  ],
+  "openings": {
+    "L1": "## Bảo vệ nhãn COMPLEMENTARY\n\n**Nguyên văn đoạn trong claim:**\n\n* Claim A: \"It is very much presented with a veneer that speaks to a very particular crowd in cognitive-science inspired machine learning community.\"\n* Claim B: \"It is not completely clear how the statistically similar patterns are constructed.\"\n\n**Điều khoản rubric:**\n\nRubric 3. COMPLEMENTARY vs UNRELATED: còn nhận ra được một issue chung -> COMPLEMENTARY, của cùng issue -> COMPLEMENTARY, không phải CONTRADICTION.\n\n**Phân tích:**\n\nCả hai claim đều liên quan đến cách trình bày và phân tích dữ liệu trong bài báo. \n\nClaim A tập trung vào **nhân khẩu học mục tiêu** của bài báo (nhóm nghiên cứu học máy theo hướng khoa học nhận thức), cho thấy cách trình bày có vẻ **lợi dụng** đặc điểm của nhóm này. Claim B bóc tách ra vấn đề **chính xác**",
+    "L2": "(a) Trích nguyên văn đoạn trong Claim A:\n\"It is very much presented with a veneer that speaks to a very particular crowd in cognitive-science inspired machine learning community.\"\n\n(b) Dẫn điều khoản rubric cụ thể mà tôi dựa vào:\n- PARTIAL_AGREEMENT: có phần chung rõ, nhưng khác phạm vi / điều kiện / mức độ."
+  },
+  "rebuttals": {
+    "L1": "Phản bác:  Claim B tập trung vào **kỹ thuật và cách thức** xây dựng các mẫu thống kê tương tự (“how the statistically similar patterns are constructed”), trong khi Claim A chú trọng vào **hình thức trình bày và đối tượng mục tiêu** của bài báo (“a veneer that speaks to a very particular crowd”).  Hai claim này không mâu thuẫn và bổ sung cho nhau, tạo nên một bức tranh toàn diện về bài báo. \n\n\nDựa trên rubric: \n\n**COMPLEMENTARY vs PARTIAL_AGREEMENT:**\n\nClaim A và B cùng liên quan đến bài báo nhưng đánh giá hai khía cạnh khác nhau.",
+    "L2": "Một trong những gì **Claim A** đưa ra là \"Cách trình bày bài báo này rất nổi bật và có vẻ rất phù hợp với một nhóm người cụ thể trong cộng đồng học máy theo hướng khoa học nhận thức.\" Điều này cho thấy rằng cách trình bày của bài báo này có thể đã được thiết kế để làm hài lòng một nhóm người cụ thể, có thể là những người quan tâm đến các vấn đề liên quan đến khoa học nhận thức trong học máy.\n\n**Claim B** lại đưa ra ý kiến rằng \"Không rõ ràng lắm cách các mẫu thống kê tương tự được xây dựng.\" Điều này cho thấy rằng có một vấn đề về việc giải thích cách các mẫu thống kê được xây dựng và cách chúng được chứng minh trong bài báo.\n\nTuy nhiên, cả hai claim đều đều không mâu thuẫn và không đối lập với nhau, mà chỉ tập trung vào các khía cạnh khác nhau của bài báo. **"
+  },
+  "verdict": "COMPLEMENTARY"
+}

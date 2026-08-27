@@ -1,0 +1,22 @@
+{
+  "pair_id": "ICLR_2021_Conference_-5W5OBfFlwX:motivation:ICLR_2021_Conference_-5W5OBfFlwX:R1:015:ICLR_2021_Conference_-5W5OBfFlwX:R2:012",
+  "assignment": {
+    "L1": "COMPLEMENTARY",
+    "L2": "PARTIAL_AGREEMENT",
+    "adv_L1": "seallm",
+    "adv_L2": "gemma"
+  },
+  "transcript_order": [
+    "L2",
+    "L1"
+  ],
+  "openings": {
+    "L2": "## Bảo vệ nhãn PARTIAL_AGREEMENT\n\nCả hai claim đều tập trung vào việc đánh giá cách thức lựa chọn thuật toán trong bài báo. \n\nClaim A ([CONCERN]: \"I am not sure why the authors resort to EXP type algorithms for a stochastic problem.\") nghi ngờ về sự lựa chọn thuật toán EXP, **đặc biệt là trong bối cảnh** bài toán là một bài toán ngẫu nhiên. Claim B ([CONCERN]: \"Even if it is useful, why the order regarding T matters?\") lại tập trung vào **lý do cần thiết của thứ tự T**, một khía cạnh khác của thuật toán.\n\nDựa vào điều khoản **rubric**: *PARTIAL_AGREEMENT*: \"có phần chung rõ, nhưng khác phạm vi / điều kiện / mức độ\", ta thấy hai claim đều **chung quanh vấn đề lựa chọn thuật toán**, nhưng **khác biệt về phạm vi**: Claim A bàn về **loại thuật toán**,",
+    "L1": "(a) Trích nguyên văn đoạn trong Claim A:\n\"I am not sure why the authors resort to EXP type algorithms for a stochastic problem.\"\n\n(b) Dẫn điều khoản rubric cụ thể mà dựa vào:\n- Rất nhiều người đã phê phán việc sử dụng các thuật toán EXP trong giải quyết vấn đề xác suất; điều này cho thấy rằng việc sử dụng các thuật toán này không phải là tối ưu hoặc không phù hợp với vấn đề cụ thể.\n- Các thuật toán EXP thường không hiệu quả trong việc giải quyết các bài toán xác suất, do đó việc sử dụng chúng có thể là lựa chọn không hợp lý hoặc không hiệu quả."
+  },
+  "rebuttals": {
+    "L2": "Mặc dù Claim A bày tỏ sự nghi ngờ về việc sử dụng thuật toán EXP cho bài toán xác suất, Claim B lại tập trung vào một khía cạnh khác của bài toán: thứ tự của dữ liệu (T) có ý nghĩa hay không. \n\nTheo rubric, **PARTIAL_AGREEMENT** được áp dụng khi hai claim đánh giá cùng một khía cạnh từ góc nhìn khác nhau. Trong trường hợp này, cả hai claim đều liên quan đến lựa chọn phương pháp giải quyết của tác giả, nhưng Claim A tập trung vào loại thuật toán, trong khi Claim B tập trung vào thứ tự dữ liệu. Cả hai khía cạnh này đều quan trọng trong việc đánh giá hiệu quả của bài toán, nhưng chúng không mâu thuẫn với nhau.",
+    "L1": "Một trong những gì **Claim A** đưa ra là sự nghi ngờ về việc sử dụng thuật toán EXP trong bài báo, đặc biệt khi bài toán là một bài toán ngẫu nhiên. Điều này cho thấy rằng, mặc dù cả hai claim đều tập trung vào việc đánh giá cách thức lựa chọn thuật toán trong bài báo, nhưng Claim A lại đặc biệt quan tâm đến loại thuật toán được sử dụng, trong khi Claim B tập trung vào lý do cần thiết của thứ tự T.\n\nBên cạnh đó, chúng ta cần phải lưu ý rằng, **rubric**: *PARTIAL_AGREEMENT* chỉ ra rằng, mặc dù có phần chung rõ ràng giữa hai claim, nhưng khác nhau về phạm vi hoặc điều kiện. Trong trường hợp này, Claim A và Claim B đều có phần chung về việc đánh giá cách thức lựa chọn thuật toán trong bài báo, nhưng lại khác nhau về phạm vi. Claim A tập trung vào loại thuật"
+  },
+  "verdict": "COMPLEMENTARY"
+}

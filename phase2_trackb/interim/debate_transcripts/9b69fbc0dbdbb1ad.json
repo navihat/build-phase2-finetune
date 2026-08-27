@@ -1,0 +1,22 @@
+{
+  "pair_id": "ICLR_2021_Conference_-GLNZeVDuik:soundness:ICLR_2021_Conference_-GLNZeVDuik:R1:003:ICLR_2021_Conference_-GLNZeVDuik:R3:012",
+  "assignment": {
+    "L1": "COMPLEMENTARY",
+    "L2": "UNRELATED",
+    "adv_L1": "gemma",
+    "adv_L2": "seallm"
+  },
+  "transcript_order": [
+    "L2",
+    "L1"
+  ],
+  "openings": {
+    "L1": "## Bảo vệ nhãn COMPLEMENTARY\n\n**Dựa vào:**\n\n* Claim A: \"With experiments on some synthetic domains, and benchmarking tasks like Zinc250, the authors empirically demonstrate that CNF-based algorithms perform competitively and often improve significantly on related approaches like Latent NF, discrete flows.\"\n* Claim B: \"The permutation-invariant nature of the proposed model results in a stable performance on the graph coloring problem, while the baseline RNN models are deeply affected by the order choices.\"\n\n**Rubric:** COMPLEMENTARY\n\n**Giải thích:**\n\nMặc dù cả hai claim đều liên quan đến hiệu suất của các thuật toán, chúng tập trung vào khía cạnh khác nhau. Claim A nhấn mạnh **hiệu quả tổng thể** của thuật toán CNF so với các phương pháp khác trong các bài toán tổng quát và benchmark. Trong khi Claim B tập trung vào **đặc điểm ổn định** của thuật toán CNF trên bài toán graph coloring cụ thể",
+    "L2": "(a) Trích nguyên văn đoạn trong Claim A:\n\"CNF-based algorithms perform competitively and often improve significantly on related approaches like Latent NF, discrete flows.\"\n\n(b) Dẫn điều khoản rubric cụ thể:\n- Claim A và Claim B nói về hai vấn đề khác nhau: Claim A nói về hiệu suất của các thuật toán dựa trên CNF trong các thực nghiệm và các nhiệm vụ benchmark, trong khi Claim B nói về tính ổn định của mô hình trên vấn đề màu tô đồ thị. Do đó, chúng không có vấn đề chung và không hỗ trợ lẫn nhau."
+  },
+  "rebuttals": {
+    "L1": "Mặc dù Claim A tập trung vào hiệu suất của thuật toán CNF trên các bài toán tổng quát và benchmark, Claim B lại nhấn mạnh tính ổn định của mô hình CNF cụ thể trong ngữ cảnh giải quyết bài toán màu tô đồ thị. \n\nĐiều này cho thấy hai claim bổ sung cho nhau bằng cách phân tích ưu điểm của CNF từ hai góc độ khác nhau: **Claim A** tập trung vào **hiệu suất chung**, trong khi **Claim B** khẳng định **sự ổn định trong một ứng dụng cụ thể**. \n\nDo đó, chúng tôi cho rằng hai claim là **COMPLEMENTARY**.",
+    "L2": "Một trong những đoạn trích mà bên đối thủ có thể sử dụng để phản bác nhãn COMPLEMENTARY là:\n\n\"However, we believe the main issue with Claim B is that it does not provide enough evidence to support the claim that CNF-based algorithms perform competitively and often improve significantly on related approaches like Latent NF, discrete flows. Instead, Claim B focuses on the stability of the proposed model on a specific problem, without directly comparing it to other approaches.\"\n\nDựa vào đoạn trích này, bên đối thủ có thể cho rằng Claim B không cung cấp đủ bằng chứng để hỗ trợ cho Claim A và hai claim không có mối liên hệ chặt chẽ với nhau. Tuy nhiên, bên bảo vệ có thể trả lời bằng cách chứng minh rằng cả hai claim đều tập trung vào hiệu suất của CNF-based algorithms và đề cập đến các khía cạnh khác nhau của hiệu suất này."
+  },
+  "verdict": "COMPLEMENTARY"
+}
