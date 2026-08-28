@@ -31,3 +31,6 @@ Thumbs.db
 
 # Logs
 *.log
+
+# Bản upload lên Drive, trùng hệt data/raw/ (32MB) — giữ ở máy, không track
+phase2_trackb/raw/
