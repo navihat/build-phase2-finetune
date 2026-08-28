@@ -4,14 +4,14 @@
 > Đầu vào: [`phase2_trackb/processed/trackB_silver.jsonl`](../phase2_trackb/processed/trackB_silver.jsonl) (1099 cặp).
 > Kế hoạch tổng: [`PLAN.md`](PLAN.md) · Nguồn few-shot: [`FEWSHOT.md`](FEWSHOT.md)
 
-> 🔴 **Đọc trước khi bấm train** *(cập nhật 2026-08-28)* — có hai thứ đang hỏng, chưa sửa:
-> 1. **Split chưa stratified theo nhãn.** Val/test lệch tới 2.5×, 5-fold lệch 13× ở
->    CONTRADICTION. Chạy train ngay bây giờ sẽ ra macro-F1 không so sánh được giữa các fold.
->    → [mục 2](#2--chia-dữ-liệu)
-> 2. **CONTRADICTION chỉ 29 mẫu, test có 2.** Đã đo hết headroom và bốn hướng xử lý.
->    → [mục 8](#8--tăng-mẫu-contradiction-phân-tích-2026-08-28-chưa-thực-thi)
->
-> Việc cụ thể để làm khi quay lại: [mục 8.5](#85--việc-cụ-thể-khi-quay-lại).
+> **Đọc trước khi bấm train** *(cập nhật 2026-08-29)*
+> - ✅ **Split đã stratified theo nhãn** và ghim few-shot vào train. 5-fold giờ đều
+>   (CONTRADICTION 4–5 mỗi fold, trước là 1–13). → [mục 2](#2--chia-dữ-liệu) ·
+>   [`reports/split_report.md`](../phase2_trackb/reports/split_report.md)
+> - 🔴 **CONTRADICTION vẫn chỉ 29 mẫu, test có 2.** Stratified đã kịch trần, không sửa được
+>   bằng cách chia. Đọc kết quả từ **5-fold CV**, đừng đọc F1 lớp này trên test.
+>   → [mục 8](#8--tăng-mẫu-contradiction-phân-tích-2026-08-28-chưa-thực-thi) nếu train xong
+>   thấy lớp này kém.
 
 ---
 
@@ -105,16 +105,18 @@ python src/train/split.py
 Ghi ra `phase2_trackb/processed/splits/`:
 
 ```
-trackB_train.jsonl   879 cặp / 180 paper
-trackB_val.jsonl     110 cặp /  21 paper
-trackB_test.jsonl    110 cặp /  21 paper
-folds.json           gán fold 0-4 cho từng pair_id (dùng cho CV)
+trackB_train.jsonl   876 cặp / 189 paper
+trackB_val.jsonl     112 cặp /  15 paper
+trackB_test.jsonl    111 cặp /  18 paper
+folds.json           gán fold 0-4 cho từng pair_id (-1 = luôn ở train), dùng cho CV
 class_weights.json   trọng số inverse-frequency tính trên train
 ```
 
+Và `reports/split_report.md` — bảng đầy đủ để duyệt trước khi train.
+
 Script tự `assert` không paper nào nằm ở hai phần, và **báo cáo rò rỉ ở mức text của claim**
-(chặt hơn mức paper). Hiện tại: `train∩val = 3`, `train∩test = 1` claim — đến từ cặp
-UNRELATED chéo paper, vì `group_of()` chỉ lấy paper bên trái.
+(chặt hơn mức paper). Hiện tại: `train∩val = 1`, `train∩test = 0`, `val∩test = 0` claim —
+phần dư đến từ cặp UNRELATED chéo paper, vì `group_of()` chỉ lấy paper bên trái.
 
 <details>
 <summary><b>Vì sao không dùng union-find gộp cả hai paper của cặp chéo</b></summary>
@@ -125,44 +127,56 @@ Lấy paper trái là đánh đổi có ý thức; phần rủi ro còn lại đ
 thay vì giấu đi.
 </details>
 
-### ⚠ CHƯA stratified theo nhãn — cần sửa trước khi train *(ghi nhận 2026-08-28)*
+### ✅ Stratified theo nhãn — đã sửa 2026-08-29
 
-`assign_groups()` ([`split.py:66-67`](../src/train/split.py#L66-L67)) chỉ cân bằng **tổng số cặp**
-so với hạn ngạch, không hề đọc `relation`. Docstring ở [`split.py:49`](../src/train/split.py#L49)
-viết *"ưu tiên giữ cân bằng nhãn"* — **sai, code không làm điều đó.**
+Bản trước của `assign_groups()` chỉ cân bằng **tổng số cặp**, không đọc `relation` (docstring
+viết *"ưu tiên giữ cân bằng nhãn"* nhưng code không làm). Nhãn tương quan mạnh trong cùng
+paper nên nhãn hiếm dồn cục.
 
-Hệ quả đo được trên các file split hiện tại:
+Bản mới chạy hai bước, xem docstring `assign_groups()`:
 
-| Nhãn | toàn bộ | train | val | **test** |
-|---|---:|---:|---:|---:|
-| AGREEMENT | 6.9% | 65 (7.4%) | 8 (7.3%) | **3 (2.7%)** ← lệch 2.5× |
-| PARTIAL_AGREEMENT | 19.7% | 184 (20.9%) | 21 (19.1%) | **12 (10.9%)** ← lệch 1.8× |
-| COMPLEMENTARY | 45.1% | 388 (44.1%) | 50 (45.5%) | 58 (52.7%) |
-| PARTIAL_CONTRADICTION | 15.3% | 127 (14.4%) | 16 (14.5%) | 25 (22.7%) |
-| CONTRADICTION | 2.6% | 23 (2.6%) | 4 (3.6%) | **2 (1.8%)** |
-| UNRELATED | 10.3% | 92 (10.5%) | 11 (10.0%) | 10 (9.1%) |
+1. **Greedy** — duyệt nhóm paper từ lớn đến nhỏ, bỏ vào phần làm tổng độ lệch tăng ít nhất.
+2. **Tinh chỉnh** — lặp thử chuyển từng nhóm sang phần khác, chỉ nhận khi tổng độ lệch giảm.
 
-Train khá sát phân phối gốc (lệch < 1 điểm %) nên `class_weights.json` vẫn dùng được.
-**Val và test thì không.**
+Điểm mấu chốt ở `_dev()`: mỗi nhãn được chuẩn hoá theo **hạn ngạch của chính nhãn đó**, nên
+lệch 2 mẫu ở lớp 29-mẫu bị phạt nặng hơn hẳn lệch 2 mẫu ở lớp 496-mẫu.
 
-5-fold còn tệ hơn — CONTRADICTION dao động **13 mẫu (f0, 5.9%) xuống 1 mẫu (f2, 0.5%)**,
-chênh 13 lần. Macro-F1 giữa các fold sẽ nhiễu tới mức không so sánh được với nhau.
+**Kết quả 5-fold, CONTRADICTION mỗi fold:**
 
-**Nguyên nhân:** nhãn tương quan mạnh trong cùng paper (một paper thường sinh cụm cặp cùng
-loại), nên greedy theo size để nhãn hiếm dồn cục.
+| | f0 | f1 | f2 | f3 | f4 | biên độ |
+|---|---:|---:|---:|---:|---:|---:|
+| trước | 13 | 4 | 1 | 6 | 5 | **13×** |
+| sau | 4 | 5 | 4 | 5 | 4 | **1.25×** |
 
-**Cách sửa:** đổi tiêu chí chọn part từ "thiếu tổng" sang "thiếu theo từng nhãn" — greedy
-stratified-group, cùng ý tưởng `StratifiedGroupKFold` của sklearn: với mỗi nhóm paper, thử bỏ
-vào từng part, chọn part làm **tổng độ lệch nhãn** nhỏ nhất so với hạn ngạch từng lớp. Giữ
-nguyên `group_of()` nên không phát sinh rò rỉ paper. **Chưa làm.**
+Lệch lớn nhất của train/val/test so với phân bố toàn cục: **2.2 điểm %** (trước: 8.8 —
+PARTIAL_AGREEMENT ở test là 10.9% trong khi toàn cục 19.7%).
+Số liệu đầy đủ: [`phase2_trackb/reports/split_report.md`](../phase2_trackb/reports/split_report.md),
+sinh tự động mỗi lần chạy `split.py`.
 
-### ⚠ Test có đúng 2 mẫu CONTRADICTION
+### ✅ Ghim few-shot vào train — sửa cùng đợt
+
+39 cặp `fewshot_human_pairs` **chính là** 39 ví dụ trong `processed/fewshot.jsonl` đã dùng làm
+few-shot khi Claude gán nhãn 1060 cặp còn lại (đối chiếu: trùng **39/39** cả text lẫn nhãn).
+Nhãn của phần còn lại được sinh ra *có điều kiện* trên chúng → để chúng vào val/test là chấm
+điểm model trên chính các ví dụ đã định nghĩa ra nhãn của tập kiểm tra.
+
+Trước bản này chúng rơi vào train **do may** (chung một `paper_id` giả `HUMAN_ANNOTATED` nên
+thành nhóm lớn nhất), không do ràng buộc nào — đổi seed hoặc `--test-size` là lọt.
+Nay ghim cứng qua `PIN_TRAIN_SOURCES`; trong `folds.json` chúng nhận `fold = -1`, mà `train.py`
+lọc bằng `fold_of[...] != k` nên tự động vào train của mọi fold. **Không phải sửa `train.py`.**
+
+Tắt để đo thử: `python src/train/split.py --no-pin-fewshot`.
+
+### ⚠ Test chỉ có 2 mẫu CONTRADICTION — giới hạn chưa gỡ được
 
 F1 của lớp đó trên test chỉ có thể là 0, 0.5 hoặc 1.0 — **con số ngẫu nhiên, không đọc được**.
 Vì vậy **luôn đọc kết quả từ 5-fold CV**, test chỉ dùng cho lần chốt checkpoint cuối.
 
-Stratified hoá cũng chỉ nâng được lên ~3 mẫu. Đây là giới hạn vật lý của 29 mẫu / 1099 cặp —
-muốn test đọc được thì phải **tăng số mẫu CONTRADICTION**, xem mục 7.
+Ghim few-shot lấy mất 7/29 mẫu CONTRADICTION khỏi phần chấm điểm (test 3 → 2), nhưng đổi lại
+CV chặt hơn hẳn (4–5 thay vì 4–7) — mà CV mới là chỗ đọc kết quả, nên đánh đổi này có lời.
+
+Stratified đã kịch trần. Đây là giới hạn vật lý của 29 mẫu / 1099 cặp — muốn test đọc được thì
+phải **tăng số mẫu CONTRADICTION**, xem mục 8.
 
 ---
 
@@ -318,9 +332,9 @@ Train ở Colab, inference ở máy — **hoàn toàn khả thi**:
 | | |
 |---|---|
 | ✅ | 1099 cặp, cả 6 lớp đều có mẫu |
-| ✅ | Chia theo paper + 5-fold, có kiểm tra rò rỉ **paper** |
+| ✅ | Chia theo paper + 5-fold, **stratified theo nhãn**, có kiểm tra rò rỉ + báo cáo duyệt |
+| ✅ | Few-shot ghim vào train (`fold = -1`), không lọt vào phần chấm điểm |
 | ✅ | Script train + notebook Colab, 7 phép đánh giá |
-| 🔴 | **Split chưa stratified theo nhãn** — val/test lệch tới 2.5×, fold lệch 13× ở CONTRADICTION (mục 2) |
 | 🔴 | **CONTRADICTION 29 mẫu là nút thắt** — test chỉ 2 mẫu, F1 lớp đó không đọc được (mục 8) |
 | ⚠ | **Script train mới chỉ kiểm cú pháp, chưa chạy end-to-end** (máy chưa có torch) |
 | ⬜ | Thêm baseline NLI zero-shot + ablation (mục 5) |
@@ -429,7 +443,7 @@ thêm ~2 mẫu, không đáng công.
 
 | | |
 |---|---|
-| ⬜ | Sửa `assign_groups()` → stratified-group, chạy lại `split.py` (mục 2) |
+| ✅ | ~~Sửa `assign_groups()` → stratified-group, chạy lại `split.py`~~ — xong 2026-08-29 |
 | ⬜ | Viết `src/data/mine_contradiction.py` — xếp hạng ứng viên bằng NLI, xuất JSONL để gán nhãn |
 | ⬜ | Gán nhãn 300–400 ứng viên top, ghi `source: mined_nli_contradiction` |
 | ⬜ | Thêm swap-aug chọn lọc theo lớp vào `train.py` |
