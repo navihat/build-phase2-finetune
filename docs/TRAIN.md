@@ -4,14 +4,24 @@
 > Đầu vào: [`phase2_trackb/processed/trackB_silver.jsonl`](../phase2_trackb/processed/trackB_silver.jsonl) (1099 cặp).
 > Kế hoạch tổng: [`PLAN.md`](PLAN.md) · Nguồn few-shot: [`FEWSHOT.md`](FEWSHOT.md)
 
-> **Đọc trước khi bấm train** *(cập nhật 2026-08-29)*
+> ✅ **Sẵn sàng train.** *(cập nhật 2026-08-29)*
+>
+> Silver đã gán lại theo contract của tập gold: 496 cặp `COMPLEMENTARY` đọc lại từng cặp,
+> **343 chuyển thành `UNRELATED`**, 110 cặp `synthetic_cross_paper` bỏ hẳn. `1099 → 989` cặp.
+> Split đã chạy lại. → [`RUBRIC_GOLD.md`](RUBRIC_GOLD.md) ·
+> [mục 10](#10--tập-gold-và-việc-gán-lại-nhãn-2026-08-29)
+>
+> - 🔴 **Mọi số ở mục 9.1 (macro-F1 CV = 0.319) đã VÔ HIỆU** — chúng đến từ split cũ, còn
+>   synthetic UNRELATED, và quan trọng nhất là **contract nhãn cũ**. Đừng so với số mới.
+>   → [mục 9](#9--lần-train-đầu-tiên--kết-quả-và-ba-thứ-đã-sửa-2026-08-29) giữ lại làm hồ sơ.
+> - ⚠ **Con số để báo cáo giờ là macro-F1 trên GOLD** (muc 10 của notebook), không phải CV
+>   trên silver. CV chỉ còn là chỉ số phát triển.
 > - ✅ **Split đã stratified theo nhãn** và ghim few-shot vào train. 5-fold giờ đều
 >   (CONTRADICTION 4–5 mỗi fold, trước là 1–13). → [mục 2](#2--chia-dữ-liệu) ·
 >   [`reports/split_report.md`](../phase2_trackb/reports/split_report.md)
-> - 🔴 **CONTRADICTION vẫn chỉ 29 mẫu, test có 2.** Stratified đã kịch trần, không sửa được
->   bằng cách chia. Đọc kết quả từ **5-fold CV**, đừng đọc F1 lớp này trên test.
->   → [mục 8](#8--tăng-mẫu-contradiction-phân-tích-2026-08-28-chưa-thực-thi) nếu train xong
->   thấy lớp này kém.
+> - 🔴 **CONTRADICTION vẫn chỉ 29 mẫu, test có 2.** Đọc kết quả từ **5-fold CV**, đừng đọc F1
+>   lớp này trên test. → [mục 8](#8--tăng-mẫu-contradiction-phân-tích-2026-08-28-chưa-thực-thi)
+>   — nhưng làm sau mục 9, vì lợi ích nhỏ hơn mà tốn nhãn tay.
 
 ---
 
@@ -331,12 +341,14 @@ Train ở Colab, inference ở máy — **hoàn toàn khả thi**:
 
 | | |
 |---|---|
-| ✅ | 1099 cặp, cả 6 lớp đều có mẫu |
+| ✅ | 1099 cặp; sau khi bỏ UNRELATED còn 986 cặp / 5 lớp (mục 9.3) |
 | ✅ | Chia theo paper + 5-fold, **stratified theo nhãn**, có kiểm tra rò rỉ + báo cáo duyệt |
 | ✅ | Few-shot ghim vào train (`fold = -1`), không lọt vào phần chấm điểm |
-| ✅ | Script train + notebook Colab, 7 phép đánh giá |
+| ✅ | Notebook Colab đã chạy end-to-end, 7 phép đánh giá — kết quả ở mục 9.1 |
+| 🔴 | **macro-F1 CV = 0.319, chưa dùng được cho hệ thống.** Chẩn đoán ở mục 9 |
+| 🔴 | **Cần chạy lại notebook** — số hiện có là từ split cũ + còn lớp UNRELATED (mục 9.2, 9.3) |
 | 🔴 | **CONTRADICTION 29 mẫu là nút thắt** — test chỉ 2 mẫu, F1 lớp đó không đọc được (mục 8) |
-| ⚠ | **Script train mới chỉ kiểm cú pháp, chưa chạy end-to-end** (máy chưa có torch) |
+| ⚠ | **`src/train/train.py` chưa được sửa theo mục 9** — nó vẫn gộp val vào train, train cứng 6 epoch, chưa có `drop_unrelated`, và **không lưu checkpoint** (không có `torch.save` nào trong file). Notebook là đường chạy thật; script này đang lệch |
 | ⬜ | Thêm baseline NLI zero-shot + ablation (mục 5) |
 | ⬜ | 50 cặp gán độc lập để có trần κ |
 | ⬜ | Dịch VI + test giữ nhãn (mục 8 của [`CHECKLIST.md`](CHECKLIST.md)) |
@@ -448,3 +460,240 @@ thêm ~2 mẫu, không đáng công.
 | ⬜ | Gán nhãn 300–400 ứng viên top, ghi `source: mined_nli_contradiction` |
 | ⬜ | Thêm swap-aug chọn lọc theo lớp vào `train.py` |
 | ⬜ | Nếu sau đó CONTRADICTION vẫn < 60 mẫu → chốt phương án ④, sửa `LABELS` ở cả split và train |
+
+---
+
+## 9 · Lần train đầu tiên — kết quả và ba thứ đã sửa *(2026-08-29)*
+
+### 9.1 · Kết quả
+
+Đối chiếu công bằng, baseline tính lại trên đúng 1099 cặp (trong notebook baseline chạy trên
+test còn model chạy trên CV, không so trực tiếp được):
+
+| | macro-F1 | accuracy |
+|---|---:|---:|
+| majority (đoán COMPLEMENTARY hết) | 0.104 | 0.451 |
+| stance-rule (3 dòng luật) | 0.191 | 0.420 |
+| **roberta-base fine-tune, 5-fold CV** | **0.319** | 0.447 |
+
+Fine-tune hơn luật 3 dòng **+0.13 macro-F1**. Accuracy thấp hơn majority là hệ quả cố ý của
+trọng số lớp, không phải lỗi.
+
+Per-class (CV, gộp 5 fold):
+
+```
+COMPLEMENTARY          0.584  (496)      AGREEMENT              0.292  ( 76)
+PARTIAL_AGREEMENT      0.478  (217)      UNRELATED              0.130  (113)  <- bất thường
+PARTIAL_CONTRADICTION  0.352  (168)      CONTRADICTION          0.078  ( 29)
+```
+
+Phụ trợ: flip-rate thô **0.155** (mục tiêu <10%, nhưng 16/17 ca lệch chỉ 1 bước — mềm hơn hẳn
+kiểu 4 bước của ensemble cũ), QWK 0.240, đúng-hoặc-lệch-1-bước **0.858**, ECE 0.338.
+
+> **0.319 là cao hay thấp?** Chưa trả lời được, và đó mới là vấn đề. Con số 8x–9x thường thấy
+> đến từ bài toán 2–3 lớp, ranh giới rõ, hàng trăm nghìn mẫu. Ở đây là 6 lớp có thứ tự, ranh
+> giới mờ, 1099 mẫu, nhãn LLM. Bỏ hai lớp gần-bằng-0 thì bốn lớp còn lại trung bình 0.43.
+> Muốn biết thật thì phải có trần κ — xem "Thiếu sót không thể tự bù" ở mục 5.
+
+### 9.2 · ⚠ Kết quả trên là từ split CŨ
+
+Notebook có **bản sao riêng** của `assign_groups` và tự chia lại tại chỗ, không đọc
+`processed/splits/`. Output của nó (`test AGRE:3 CONT:2`, fold 220×5) đúng là bộ split hỏng
+đã thay ở mục 2. Nên `AGREEMENT F1 = 0.000` ở mục 7.1 của notebook là do test chỉ có 3 mẫu,
+không phải model không học được lớp đó — CV cho thấy 0.292 trên 76 mẫu.
+
+**Đã sửa:** notebook đọc `splits/` và `folds.json`, có `assert` chặn cả rò rỉ paper lẫn
+few-shot lọt vào phần chấm điểm.
+
+### 9.3 · 🔴 UNRELATED hỏng từ thiết kế — nguyên nhân lớn nhất
+
+113 mẫu (không phải lớp hiếm) mà F1 chỉ 0.130. **Không phải lỗi model.**
+
+110/113 cặp là `synthetic_cross_paper`: ghép claim của hai paper khác nhau. Đo trên dữ liệu:
+
+| | n | không chung từ nội dung nào | có ≥1 từ chung |
+|---|---:|---:|---:|
+| UNRELATED (chéo paper) | 110 | **91.8%** | 8.2% |
+| COMPLEMENTARY (cùng paper) | 496 | **83.9%** | 16.3% |
+
+Hai phân bố gần trùng. Luật ngưỡng tốt nhất chỉ đạt F1 0.323, trong khi đoán bừa đã 0.307.
+
+```
+COMPLEMENTARY (cùng paper):
+  A: "The other concern I had is w.r.t. detailed settings of the 'no generator' experiment..."
+  B: "The paper is well-written and is easy to follow."
+
+UNRELATED (khác paper):
+  A: "The proposed approach is, for the most part, easy to follow and understand."
+  B: "The paper seems to focus on the former and does not have any analysis for the latter."
+```
+
+Khác biệt duy nhất giữa hai lớp là **metadata "cùng paper hay không"** — thứ model không bao
+giờ nhìn thấy, vì `PairSet` chỉ lấy `left.text` và `right.text`. Thông tin định nghĩa ra lớp
+không nằm trong input, nên F1 0.130 là hành vi *đúng* của model.
+
+**Và nặng hơn:** hệ thống thật luôn so hai claim của **cùng một paper** — bạn biết điều đó
+trước khi gọi model. Cặp chéo paper không bao giờ xuất hiện lúc triển khai, tức 97% dữ liệu
+UNRELATED nằm ngoài phân phối của bài toán thật.
+
+Đúng lỗi này đã có ở ensemble cũ: mục 0 ghi *"riêng lỗi UNRELATED → COMPLEMENTARY chiếm 14/29
+ca lệch"*. Cùng một nguyên nhân gốc, không phải trùng hợp.
+
+*(Suýt có rò rỉ: 60% cặp chéo paper mang `aspect` ghép dạng `clarity|substance`, COMPLEMENTARY
+thì 0%. May là `aspect` không được đưa vào model.)*
+
+**Đã sửa:** `cfg.drop_unrelated = True` → train 5 lớp. Ước tính lợi ích:
+
+| | macro-F1 CV |
+|---|---:|
+| hiện tại, 6 lớp | 0.319 |
+| bỏ UNRELATED, 5 lớp | **0.357** |
+| giữ 6 lớp nhưng UNRELATED định nghĩa lại và học được ~0.5 | 0.381 |
+
+Chưa kể lợi ích lan toả: 6 ca COMPLEMENTARY→UNRELATED và 6 ca ngược lại biến mất.
+
+⚠ **Phải khai vào manifest:** checkpoint không có lớp UNRELATED; bên gọi chịu trách nhiệm đảm
+bảo hai claim cùng một paper. Nếu sau này cần UNRELATED thật thì phải định nghĩa lại là *cùng
+paper nhưng hai claim nói về hai chuyện không liên quan* và gán nhãn lại — ranh giới với
+COMPLEMENTARY sẽ rất mờ.
+
+### 9.4 · Overfit và không hiệu chuẩn được
+
+6 epoch cố định kéo train loss xuống **0.24** trên ~1000 mẫu. Hệ quả: confidence khi đúng
+0.868 vs khi sai 0.840 — gần như không phân biệt, ECE 0.338. Cắt ngưỡng 0.9 giữ 58% dữ liệu
+mà accuracy chỉ nhích 0.518 → 0.547. **Không đặt được ngưỡng ABSTAIN.**
+
+Bằng chứng phụ: fold 4 train kém nhất (loss dừng ở 0.561 thay vì 0.19–0.33) lại đạt macro-F1
+0.347, thuộc nhóm cao nhất. Fit ít hơn không mất gì.
+
+Thêm nữa `train_model(train_rows + val_rows, cfg)` **gộp val thẳng vào train** — val không hề
+làm nhiệm vụ của val.
+
+**Đã sửa:** `epochs` thành trần (6) + `patience=2`, chọn epoch theo macro-F1 trên val, giữ
+state tốt nhất. CV không có val riêng nên train cứng `BEST_EPOCH` mà val đã chọn.
+
+### 9.5 · Learning curve chưa đọc được — CHƯA sửa
+
+`0.226 → 0.169 → 0.220 → 0.268`. Mức 50% thấp hơn mức 25%. Biến động giữa các mức (±0.05) lớn
+hơn cả độ lệch giữa các fold (±0.039), vì mỗi mức chỉ chạy một seed và chấm trên test 110 cặp.
+Cần ≥3 seed mỗi mức và chấm bằng CV. Cell đã in cảnh báo này; chưa đổi cách chạy.
+
+### 9.6 · Phụ: pin phiên bản không có tác dụng
+
+`pip install transformers==4.44.2` **fail build wheel cho tokenizers**, notebook chạy tiếp
+bằng bản Colab có sẵn → kết quả không tái lập. Đã bỏ pin và in bản thật để ghi vào manifest.
+
+### 9.7 · Thứ tự việc còn lại
+
+| | |
+|---|---|
+| ✅ | Notebook đọc `splits/` + `folds.json` thay vì tự chia |
+| ✅ | Bỏ lớp UNRELATED (`cfg.drop_unrelated`) |
+| ✅ | Val dùng đúng nghĩa + dừng sớm |
+| ⬜ | **Chạy lại notebook** — mọi số ở 9.1 là từ cấu hình cũ |
+| ⬜ | Learning curve ≥3 seed, chấm bằng CV (9.5) |
+| ⬜ | 50 cặp gán độc lập để có trần κ — không có nó thì không kết luận được 0.319 tốt hay tệ |
+| ⬜ | Baseline NLI zero-shot (mục 5) — phép thử gắt nhất, vẫn chưa chạy |
+| ⬜ | Chỉ sau đó mới tới mục 8 (CONTRADICTION): kéo lớp này 0.078 → 0.35 chỉ được +0.045 macro-F1, ít hơn 9.3 mà tốn 300–400 nhãn tay |
+
+---
+
+## 10 · Tập gold và việc gán lại nhãn *(2026-08-29)*
+
+`phase2_trackb/golden_set/gold_test.jsonl` xuất hiện: **129 cặp, `relation-gold-1.0`,
+`HUMAN_VERIFIED`, annotator `NTH`**, cân đều cả 6 lớp (COMP 29 · PART_CONTRA 24 ·
+PART_AGREE 24 · AGREE 20 · UNREL 18 · CONTRA 14). Đây chính là thứ mục 5 đòi từ đầu —
+nền người để biết 0.319 là gần trần hay còn xa.
+
+**Quyết định: gold là contract chuẩn, silver phải gán lại theo nó.**
+
+### 10.1 · Ba khoảng cách giữa train và gold
+
+| | train (silver) | eval (gold) |
+|---|---|---|
+| Ngôn ngữ | 1099/1099 **tiếng Anh** | 129/129 **tiếng Việt** |
+| Miền | review paper ICLR về ML | phản biện đề tài đại học VN (3 cohort, 17 tiêu chí) |
+| Contract nhãn | rubric v1 | [`RUBRIC_GOLD.md`](RUBRIC_GOLD.md) |
+
+Khoảng cách 1 → đổi backbone sang `xlm-roberta-base` (đã làm). Khoảng cách 3 → gán lại
+(đang chờ). Khoảng cách 2 chưa xử lý; cell mục 10 của notebook tách theo cohort để đo nó.
+
+### 10.2 · 🔴 Contract lệch ở đúng một lớp
+
+Đối chiếu `why` của silver với `annotation_note` của gold:
+
+| Lớp silver | `why` mở đầu bằng | Khớp gold? |
+|---|---|---|
+| `AGREEMENT` | "cùng điểm cụ thể… cùng chiều cùng mức độ" — 70/70 | ✅ |
+| `PARTIAL_AGREEMENT` | "cùng chiều…, khác phạm vi" — 210/210 | ✅ |
+| `PARTIAL_CONTRADICTION` | "cùng điểm…, A khen B chê có điều kiện" — 160/160 | ✅ |
+| `CONTRADICTION` | "cùng điểm cụ thể… không thể cùng đúng" — 22/22 | ✅ |
+| **`COMPLEMENTARY`** | **"khác điểm cụ thể: X vs Y" — 494/496** | 🔴 phần lớn phải là `UNRELATED` |
+
+Bốn lớp không phải đụng tới — đó là phần đỡ tốn công nhất của phát hiện này.
+
+Gold dành `COMPLEMENTARY` cho trường hợp hẹp hơn nhiều: **cùng một thiếu sót, hai góc bổ sung
+nhau**. Phép thử một câu:
+
+> Có tồn tại MỘT vấn đề chung mà cả hai claim đều nhắm tới không?
+> có → `COMPLEMENTARY` · không → `UNRELATED`
+
+### 10.3 · 110 cặp `synthetic_cross_paper` bị bỏ hẳn
+
+Sai cả hai mặt: không học được (mục 9.3), **và** sai định nghĩa — gold không hề coi "khác
+paper" là UNRELATED, cả 18 cặp UNRELATED của gold đều **cùng cohort, cùng criterion**, chỉ
+khác reviewer. Điều này cũng lật lại quyết định bỏ lớp UNRELATED ở mục 9.3: lớp đó **được giữ**,
+chỉ là dữ liệu của nó phải đến từ việc gán lại chứ không từ luật ghép chéo paper.
+
+### 10.4 · Đã làm xong
+
+| | |
+|---|---|
+| ✅ | [`RUBRIC_GOLD.md`](RUBRIC_GOLD.md) — contract rút từ 129 `annotation_note`, cây quyết định 2 chiều |
+| ✅ | `src/data/relabel_complementary.py` — xuất batch + `--apply` ghi ngược |
+| ✅ | **Gán lại 496 cặp**: 343 → `UNRELATED`, 153 giữ `COMPLEMENTARY`; bỏ 110 synthetic. `1099 → 989` |
+| ✅ | `split.py` chạy lại; `SIZE_W` 3.0 → 6.0 vì phân bố nhãn đổi (xem comment trong file) |
+| ✅ | Notebook: `xlm-roberta-base`, 6 lớp, chốt chặn ở mục 3, mục 10 chấm trên gold |
+
+Quyết định từng cặp kèm lý do: `phase2_trackb/interim/relabel/decisions.jsonl`.
+Bản silver trước khi gán lại: `processed/trackB_silver_pre_gold_relabel.jsonl`.
+
+### 10.5 · Split sau khi gán lại
+
+```
+train 788 / val 100 / test 101      lệch nhãn lớn nhất 1.6 điểm %  (trước 2.2)
+rò rỉ claim text: 0 / 0 / 0         (trước train∩val = 1; cặp chéo paper gây ra đã bị bỏ)
+5-fold  kích thước 186-193          CONTRADICTION 4/5/4/5/4
+```
+
+`SIZE_W = 3.0` với phân bố mới cho CONTRADICTION 5/5/**2**/5/5 và fold lệch 172-201;
+`6.0` cho 4/5/4/5/4 và 186-193 — tốt hơn ở **cả hai** mặt nên không phải đánh đổi.
+
+### 10.6 · ⚠ Còn lệch tiên nghiệm giữa train và gold
+
+| | silver | gold |
+|---|---:|---:|
+| UNRELATED | **35.0%** | **14.0%** |
+| COMPLEMENTARY | 15.5% | 22.5% |
+| AGREEMENT | 7.7% | 15.5% |
+| CONTRADICTION | 2.9% | 10.9% |
+
+Model sẽ thiên về đoán `UNRELATED` trên gold. Trọng số lớp bù một phần (`UNRELATED w=0.48`,
+`CONTRADICTION w=5.25`). Nếu ma trận nhầm lẫn ở muc 10 cho thấy cột UNRELATED phình ra thì
+đây là nguyên nhân, **không phải** gán lại sai.
+
+Gốc rễ: B3 ghép cặp theo "cùng paper + **cùng aspect**", mà aspect của ICLR rất thô
+(`soundness` gộp 5014 claim) so với `criterion_id` của gold (17 tiêu chí). Aspect thô ⇒ nhiều
+cặp cùng nhãn nhưng khác issue ⇒ nhiều UNRELATED. Đây là đặc tính của **cách sinh cặp**,
+không sửa được bằng gán nhãn.
+
+### 10.6 · Hai việc còn treo
+
+- **`processed/fewshot.jsonl` (39 ví dụ) vẫn theo rubric cũ.** Nó là few-shot đã dùng để gán
+  nhãn 1060 cặp còn lại. Sau khi đổi contract thì nên dựng lại few-shot **từ gold**, không phải
+  từ 39 cặp cũ. 8 cặp trong đó đang mang nhãn `COMPLEMENTARY` nên cũng nằm trong danh sách gán lại.
+- **Rà phụ ranh giới `COMPLEMENTARY` ↔ `PARTIAL_AGREEMENT`** trên 210 cặp PARTIAL_AGREEMENT.
+  Hai lớp này ở gold đều là "cùng hướng, khác góc", khác nhau ở chỗ neo vào một thiếu sót cụ thể
+  hay một phán xét tổng thể — xem `RUBRIC_GOLD.md` muc 2. Ưu tiên thấp hơn 496 cặp kia.
+- **2/18 cặp UNRELATED của gold có note không khớp phép thử** — xem `RUBRIC_GOLD.md` muc 5.
+  Chiếm 1.6%, không chặn việc gì, nhưng nên xác nhận trước khi chốt con số cuối.

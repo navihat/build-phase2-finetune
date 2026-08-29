@@ -1,0 +1,44 @@
+{
+ "test": "Có tồn tại MỘT vấn đề chung mà cả hai claim đều nhắm tới không?",
+ "yes": "COMPLEMENTARY",
+ "no": "UNRELATED",
+ "contract": "docs/RUBRIC_GOLD.md",
+ "fewshot_from_gold": [
+  {
+   "label": "COMPLEMENTARY",
+   "left": "Tổng quan mô hình dự báo tương đối đầy đủ nhưng thiếu nghiên cứu tại Việt Nam về hiệu quả can thiệp sau cảnh báo, fairness và nguy cơ tái định danh.",
+   "right": "Tổng quan bao quát mô hình dự báo quốc tế và một số nghiên cứu trong nước nhưng thiếu mô tả cách cảnh báo chuyển thành hành động hỗ trợ; nên bổ sung bằng chứng về adoption của cố vấn.",
+   "why": "Cả hai chỉ ra tổng quan thiếu phần 'sau cảnh báo' nhưng từ góc khác nhau: PB-02 về fairness/tái định danh, PB-03 về bằng chứng adoption của cố vấn — bổ sung cho nhau, không mâu thuẫn."
+  },
+  {
+   "label": "COMPLEMENTARY",
+   "left": "Nội dung bao phủ pipeline kỹ thuật nhưng phần đạo đức/quản trị dữ liệu/khiếu nại còn mỏng; cần thêm một gói công việc đánh giá tác động và phân quyền.",
+   "right": "Nội dung kỹ thuật phù hợp mục tiêu nhưng cần đồng thiết kế cùng cố vấn và sinh viên trước khi khóa giao diện; đánh giá pilot nên thu cả số liệu và phản hồi định tính.",
+   "why": "Cả hai chỉ ra thiếu yếu tố con người/tham gia trong nội dung công việc nhưng từ khía cạnh khác nhau: quản trị/đạo đức (PB-02) và đồng thiết kế với người dùng (PB-03)."
+  },
+  {
+   "label": "COMPLEMENTARY",
+   "left": "Python/PostgreSQL/MLflow/SHAP phù hợp xử lý dữ liệu, quản lý thí nghiệm, giải thích dự báo; nên đóng gói pipeline tái lập được và ghi phiên bản đặc trưng.",
+   "right": "Tích hợp dữ liệu SIS/LMS/cố vấn khả thi nếu có kiểm tra chất lượng và fallback; dashboard cần hiển thị lý do cảnh báo bằng ngôn ngữ dễ hiểu, không chỉ giá trị SHAP kỹ thuật.",
+   "why": "PB-01 bàn về khả năng tái lập pipeline kỹ thuật, PB-03 bàn về khả năng tích hợp nguồn dữ liệu và tính dễ hiểu của dashboard cho người dùng — hai khía cạnh khác nhau, không mâu thuẫn."
+  },
+  {
+   "label": "UNRELATED",
+   "left": "Ba mục tiêu cụ thể, đo được (AUC tối thiểu 0,82, recall tối thiểu 0,75, pilot tại hai khoa), phù hợp thời gian 18 tháng.",
+   "right": "Mục tiêu xây dựng dữ liệu/mô hình/dashboard tương đối rõ, có chỉ số kỹ thuật cụ thể; cần thêm chỉ số vận hành như tỷ lệ xử lý cảnh báo trong 7 ngày.",
+   "why": "Cả hai đồng ý mục tiêu kỹ thuật khá rõ ràng; PB-03 chỉ bổ sung yêu cầu thêm chỉ số vận hành mà không phủ nhận đánh giá của PB-01."
+  },
+  {
+   "label": "UNRELATED",
+   "left": "Mục tiêu hiện trộn ba lớp (hiệu năng, vận hành, hiệu quả can thiệp); cần chỉ định outcome chính, ngưỡng calibration/fairness và điều kiện dừng pilot.",
+   "right": "Mục tiêu xây dựng dữ liệu/mô hình/dashboard tương đối rõ, có chỉ số kỹ thuật cụ thể; cần thêm chỉ số vận hành như tỷ lệ xử lý cảnh báo trong 7 ngày.",
+   "why": "Cùng cho rằng mục tiêu hiện tại thiếu chỉ số quan trọng, nhưng PB-02 cho là vấn đề định nghĩa outcome (chưa đủ rõ), còn PB-03 chấp nhận mục tiêu hiện tại là rõ và chỉ cần bổ sung thêm."
+  },
+  {
+   "label": "UNRELATED",
+   "left": "Hệ thống điểm danh bằng nhận diện khuôn mặt giải quyết đúng vấn đề thực tiễn: giảm thời gian điểm danh thủ công ở lớp đông sinh viên.",
+   "right": "Đề tài đáng chú ý ở khía cạnh triển khai mã nguồn mở, giúp các trường khác có thể tái sử dụng miễn phí.",
+   "why": "PB-01 nói về lợi ích tiết kiệm thời gian; PB-03 nói về lợi ích mã nguồn mở cho các trường khác — không cùng một issue cụ thể dù cùng tiêu chí."
+  }
+ ]
+}

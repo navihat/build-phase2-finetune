@@ -30,7 +30,11 @@ SEED = 20260828
 # Số hạng tổng-kích-thước trong hàm chi phí. Mỗi nhãn đã đóng góp một số hạng chuẩn hoá
 # theo hạn ngạch của chính nó, nên lớp hiếm tự động nặng hơn; hệ số này giữ cho việc chạy
 # theo nhãn không kéo lệch hẳn kích thước các phần.
-SIZE_W = 3.0
+#
+# 6.0 chứ không phải 3.0 (đổi 2026-08-29, sau khi gán lại nhãn theo contract gold): với phân
+# bố mới, 3.0 đẩy CONTRADICTION thành 5/5/2/5/5 giữa các fold VÀ để kích thước fold lệch
+# 172-201. 6.0 cho 4/5/4/5/4 và 186-193 — tốt hơn ở CẢ HAI mặt nên không phải đánh đổi.
+SIZE_W = 6.0
 
 # Nguồn buộc phải nằm nguyên trong train.
 # 39 cặp `fewshot_human_pairs` CHÍNH LÀ 39 ví dụ trong processed/fewshot.jsonl đã dùng làm
