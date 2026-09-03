@@ -35,7 +35,7 @@ from sklearn.metrics import classification_report, f1_score, confusion_matrix
 from transformers import (AutoTokenizer, AutoModelForSequenceClassification,
                           get_linear_schedule_with_warmup)
 
-ROOT = Path(__file__).resolve().parents[2] / "phase2_trackb"
+ROOT = Path(__file__).resolve().parents[2] / "pipeline_data"
 SPLITS = ROOT / "processed" / "splits"
 LABELS = ["AGREEMENT", "PARTIAL_AGREEMENT", "COMPLEMENTARY",
           "PARTIAL_CONTRADICTION", "CONTRADICTION", "UNRELATED"]

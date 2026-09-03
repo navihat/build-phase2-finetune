@@ -4,7 +4,7 @@
 
 Output: phase-2/fewshot.jsonl  (upload thành {ROOT}/processed/fewshot.jsonl)
 
-Chọn cặp và gán nhãn: Claude, đọc tay từng cặp theo RUBRIC trong track_b_pipeline.ipynb.
+Chọn cặp và gán nhãn: Claude, đọc tay từng cặp theo RUBRIC trong 01_data_pipeline.ipynb.
 Nguyên liệu là câu thật trong corpus, và cặp nào cũng đã được một annotator NGƯỜI
 xác định là "hai reviewer đang nói về cùng một chuyện" — phần khó nhất. Việc còn
 lại là ánh xạ sang 6 nhãn của contract, và đó là phần Claude làm.

@@ -19,7 +19,7 @@ from pathlib import Path
 if hasattr(sys.stdout, "reconfigure"):     # console Windows mặc định cp1252, không in nổi tiếng Việt
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
-ROOT = Path(__file__).resolve().parents[2] / "phase2_trackb"
+ROOT = Path(__file__).resolve().parents[2] / "pipeline_data"
 SILVER = ROOT / "processed" / "trackB_silver.jsonl"
 OUTDIR = ROOT / "processed" / "splits"
 REPORT = ROOT / "reports" / "split_report.md"

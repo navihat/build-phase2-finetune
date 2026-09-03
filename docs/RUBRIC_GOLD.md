@@ -1,6 +1,6 @@
 # Contract nhãn — bản GOLD
 
-> Rút ra từ `phase2_trackb/golden_set/gold_test.jsonl` (129 cặp, `relation-gold-1.0`,
+> Rút ra từ `pipeline_data/golden_set/gold_test.jsonl` (129 cặp, `relation-gold-1.0`,
 > `HUMAN_VERIFIED`, annotator `NTH`) bằng cách đọc toàn bộ trường `annotation_note`.
 > **Đây là contract chuẩn.** Rubric cũ dùng cho `trackB_silver.jsonl` lệch ở đúng một chỗ,
 > xem mục 3. Bối cảnh: [`TRAIN.md`](TRAIN.md) muc 10.
@@ -139,7 +139,7 @@ Bốn lớp còn lại **không cần đụng tới** — đó là phần đỡ 
 
 496 cặp đọc từng cặp theo phép thử ở mục 2, mặc định `UNRELATED`, chỉ giữ `COMPLEMENTARY`
 khi có **bằng chứng dương** về một đối tượng/thiếu sót chung. Mỗi quyết định kèm `why_moi`
-nêu rõ đối tượng chung là gì — lưu ở `phase2_trackb/interim/relabel/decisions.jsonl`.
+nêu rõ đối tượng chung là gì — lưu ở `pipeline_data/interim/relabel/decisions.jsonl`.
 
 ```
 COMPLEMENTARY -> UNRELATED : 343  (69.2%)

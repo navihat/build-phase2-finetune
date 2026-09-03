@@ -2,7 +2,7 @@
 
 > **Dùng file này để tự kiểm soát tiến độ khi chạy Colab.** Nó độc lập: mọi ngưỡng, mọi điều kiện dừng, mọi việc phải làm đều nằm ở đây, không cần hỏi lại ai.
 >
-> Notebook: [`track_b_pipeline.ipynb`](../notebooks/track_b_pipeline.ipynb) · Kế hoạch đầy đủ: [`docs/PLAN.md`](PLAN.md)
+> Notebook: [`01_data_pipeline.ipynb`](../notebooks/01_data_pipeline.ipynb) · Kế hoạch đầy đủ: [`docs/PLAN.md`](PLAN.md)
 >
 > **Cách dùng:** tick `[x]` khi xong. Gặp dòng ⛔ thì **dừng lại thật**, đừng chạy tiếp cho xong.
 

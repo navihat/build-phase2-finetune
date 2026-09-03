@@ -1,0 +1,45 @@
+# gcloud mặc định kế thừa .gitignore (qua #!include:.gitignore), nhưng
+# .gitignore ở đây cố tình bỏ qua relation_classifier_v1/ (không track model
+# nặng vào git) — nếu để mặc định, gcloud builds submit sẽ KHÔNG upload model,
+# khiến bước "COPY relation_classifier_v1" trong Dockerfile fail hoặc build ra
+# image thiếu weights. File này ghi đè để không kế thừa .gitignore.
+
+.git/
+.gitignore
+
+# Dữ liệu / notebook / tài liệu — không cần để build image inference
+pipeline_data/
+notebooks/
+docs/
+data/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+
+# Jupyter
+.ipynb_checkpoints/
+*.bak
+*.bak2
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Secrets / env
+.env
+.env.*
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+*.log

@@ -22,7 +22,7 @@ from pathlib import Path
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
-ROOT = Path(__file__).resolve().parents[2] / "phase2_trackb"
+ROOT = Path(__file__).resolve().parents[2] / "pipeline_data"
 SILVER = ROOT / "processed" / "trackB_silver.jsonl"
 GOLD = ROOT / "golden_set" / "gold_test.jsonl"
 OUTDIR = ROOT / "interim" / "relabel"

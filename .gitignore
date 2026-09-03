@@ -9,7 +9,7 @@ dist/
 
 # Jupyter
 .ipynb_checkpoints/
-*.bak
+*.bak*
 
 # Virtual environments
 .venv/
@@ -33,4 +33,5 @@ Thumbs.db
 *.log
 
 # Bản upload lên Drive, trùng hệt data/raw/ (32MB) — giữ ở máy, không track
-phase2_trackb/raw/
+pipeline_data/raw/
+relation_classifier_v1/

@@ -22,7 +22,7 @@ ROOT = Path(__file__).resolve().parents[2]
 SRC = ROOT / "data" / "raw" / "Human_Annotated_Data.json"
 OUT = ROOT / "data" / "fewshot" / "candidates.jsonl"
 
-# Aspect hợp lệ theo B2_SCHEMA trong track_b_pipeline.ipynb
+# Aspect hợp lệ theo B2_SCHEMA trong 01_data_pipeline.ipynb
 VALID_ASPECTS = {
     "clarity", "motivation", "substance",
     "soundness", "originality", "meaningful comparison",
@@ -72,7 +72,7 @@ def clean_quote(t):
     return t
 
 
-# Giữ đồng bộ với REBUTTAL_MARKERS trong track_b_pipeline.ipynb (B1). B1 cắt bỏ
+# Giữ đồng bộ với REBUTTAL_MARKERS trong 01_data_pipeline.ipynb (B1). B1 cắt bỏ
 # mọi thứ từ marker đầu tiên trở đi, nên claim hậu-rebuttal không bao giờ tới được B4.
 REBUTTAL_MARKERS = [
     "update after", "after reading the author", "post-rebuttal", "after rebuttal",
